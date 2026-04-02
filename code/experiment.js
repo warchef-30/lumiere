@@ -9,6 +9,44 @@ function showScreen(id) {
   document.getElementById(id).classList.add('active');
 }
 
+// ── Debug 导航面板（仅 CONFIG.debug = true 时显示）──────
+if (CONFIG.debug) {
+  const screens = [
+    { id: 's-welcome',    label: '1 欢迎' },
+    { id: 's-countdown',  label: '2 倒计时' },
+    { id: 's-baseline',   label: '3 基线问卷' },
+    { id: 's-video-intro',label: '4 视频说明' },
+    { id: 's-video',      label: '5 视频播放' },
+    { id: 's-mood',       label: '6 情绪问卷' },
+    { id: 's-sart-intro', label: '7 SART说明' },
+    { id: 's-sart',       label: '8 SART测试' },
+    { id: 's-sart-break', label: '9 练习完成' },
+    { id: 's-complete',   label: '10 完成' },
+  ];
+
+  const nav = document.createElement('div');
+  nav.style.cssText = `
+    position: fixed; top: 10px; right: 10px; z-index: 9999;
+    background: rgba(0,0,0,0.8); border-radius: 8px;
+    padding: 8px; display: flex; flex-direction: column; gap: 4px;
+    font-size: 11px;
+  `;
+
+  screens.forEach(({ id, label }) => {
+    const btn = document.createElement('button');
+    btn.textContent = label;
+    btn.style.cssText = `
+      background: #374151; color: #fff; border: none;
+      border-radius: 4px; padding: 4px 8px; cursor: pointer;
+      text-align: left; white-space: nowrap;
+    `;
+    btn.addEventListener('click', () => showScreen(id));
+    nav.appendChild(btn);
+  });
+
+  document.body.appendChild(nav);
+}
+
 // ── 时间格式化 ────────────────────────────────────────
 function fmtTime(sec) {
   const m = String(Math.floor(sec / 60)).padStart(2, '0');
