@@ -30,10 +30,11 @@ const CONFIG = {
     4: { url: 'https://www.youtube.com/embed/aqz-KE-bpKQ',  durationSec: 16 * 60 },
   },
 
-  // ── SART 参数（Robertson et al., 1997）────────────────
+  // ── SART 参数（Robertson et al., 1997，修改版）─────────
+  // digitMs 从原版 250ms 调整为 500ms，适配普通参与者；需在论文 Methods 注明此修改
   sart: {
-    digitMs:        250,                     // 数字呈现时长（ms）
-    maskMs:         900,                     // circle-cross mask 时长（ms）
+    digitMs:        500,                     // 数字呈现时长（ms）
+    maskMs:         700,                     // circle-cross mask 时长（ms）
     fontSizes:      [48, 72, 94, 100, 120],  // 5种字号（px），每题随机选取
     target:         3,                       // no-go 数字（见到不按）
     practiceTrials: 18,                      // 练习题数（每个数字×2）
