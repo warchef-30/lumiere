@@ -37,8 +37,8 @@ const CONFIG = {
     maskMs:         700,                     // circle-cross mask 时长（ms）
     fontSizes:      [48, 72, 94, 100, 120],  // 5种字号（px），每题随机选取
     target:         3,                       // no-go 数字（见到不按）
-    practiceTrials: 18,                      // 练习题数（每个数字×2）
-    mainTrials:     225,                     // 正式题数（每个数字×25）
+    practiceTrials: 9,                       // 练习题数（每个数字×1）
+    mainTrials:     90,                      // 正式题数（每个数字×10，约1分50秒）
   },
 
 };
