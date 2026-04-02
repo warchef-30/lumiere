@@ -59,6 +59,19 @@ function submitData() {
   const el = document.getElementById('completionId');
   if (el) el.textContent = State.participantId.slice(0, 8).toUpperCase();
 
+  // 显示评分卡
+  const totalTrials = trials.length;
+  const commErr = trials.filter(t => t.type === 'commission_error').length;
+  const accuracy = totalTrials
+    ? Math.round(((totalTrials - commErr - trials.filter(t => t.type === 'omission_error').length) / totalTrials) * 100)
+    : 0;
+  const accEl = document.getElementById('scoreAccuracy');
+  const rtEl  = document.getElementById('scoreMeanRT');
+  const errEl = document.getElementById('scoreErrors');
+  if (accEl) accEl.textContent = accuracy + '%';
+  if (rtEl)  rtEl.textContent  = meanRT ? meanRT + ' ms' : '—';
+  if (errEl) errEl.textContent = commErr + ' 次';
+
   // 提交到 Google Sheets
   if (CONFIG.sheetsUrl !== 'YOUR_APPS_SCRIPT_URL_HERE') {
     fetch(CONFIG.sheetsUrl, {
