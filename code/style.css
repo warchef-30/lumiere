@@ -1,0 +1,255 @@
+/* ═══════════════════════════════════════════════════════
+   style.css  —  Lumiere SART 实验样式
+   移动端优先，响应式布局
+═══════════════════════════════════════════════════════ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+               'Hiragino Sans GB', sans-serif;
+  background: #f0f2f5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 16px 48px;
+  color: #1a1a1a;
+}
+
+/* ── 屏幕容器 ────────────────────────────────────────── */
+.screen {
+  display: none;
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px 32px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  text-align: center;
+}
+.screen.active { display: block; }
+
+/* ── 字体层级 ────────────────────────────────────────── */
+h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 12px; line-height: 1.3; }
+h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 14px; }
+p  { font-size: 0.95rem; line-height: 1.75; color: #444; margin-bottom: 12px; }
+.hint { font-size: 0.82rem; color: #9ca3af; }
+
+/* ── 按钮 ────────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 13px 40px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: background 0.15s;
+  min-width: 160px;
+}
+.btn:hover  { background: #1d4ed8; }
+.btn:active { background: #1e40af; }
+
+.btn-ghost {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-top: 12px;
+  text-decoration: underline;
+  display: block;
+  width: 100%;
+}
+
+/* ── 倒计时 ──────────────────────────────────────────── */
+#countdownNumber {
+  font-size: 6rem;
+  font-weight: 800;
+  color: #2563eb;
+  line-height: 1;
+  margin: 28px 0;
+}
+
+/* ── 问卷通用 ────────────────────────────────────────── */
+.q-block { text-align: left; margin-bottom: 24px; }
+.q-block > label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: #1a1a1a;
+}
+.q-block select,
+.q-block input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #f9fafb;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.q-block select:focus,
+.q-block input:focus { border-color: #2563eb; }
+
+/* ── Likert 量表 ─────────────────────────────────────── */
+.scale-row { display: flex; gap: 6px; margin-top: 8px; }
+.scale-row label { flex: 1; cursor: pointer; }
+.scale-row input[type="radio"] { display: none; }
+.scale-row span {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  background: #f9fafb;
+  transition: all 0.12s;
+}
+.scale-row input:checked + span {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+.scale-ends {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+/* ── 视频区域 ────────────────────────────────────────── */
+.video-group-tag {
+  display: inline-block;
+  background: #eff6ff;
+  color: #2563eb;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+#videoBox {
+  width: 100%;
+  background: #0f0f0f;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 16px 0 8px;
+  position: relative;
+  padding-top: 56.25%; /* 16:9 */
+}
+#videoBox iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+  pointer-events: none; /* 防止用户拖动进度条 */
+}
+#videoTimer {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+}
+#videoProgressBar {
+  width: 100%; height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+#videoProgressFill {
+  height: 100%;
+  background: #2563eb;
+  width: 0%;
+  transition: width 1s linear;
+}
+
+/* ── SART 屏幕 ───────────────────────────────────────── */
+#s-sart {
+  background: #0a0a0a;
+  border-radius: 16px;
+  padding: 32px 24px;
+  min-height: 440px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+}
+#s-sart.active { display: flex; }
+
+#sartPhaseLabel {
+  font-size: 0.75rem;
+  color: #4b5563;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.sart-rule {
+  font-size: 0.8rem;
+  color: #374151;
+  margin-top: 2px;
+}
+
+#sartStimulus {
+  width: 240px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+#sartDigit {
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+  display: none;
+}
+
+#sartMask {
+  display: none;
+  width: 110px; height: 110px;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 300;
+}
+
+#sartFeedback {
+  font-size: 0.95rem;
+  font-weight: 600;
+  min-height: 20px;
+}
+.fb-ok  { color: #34d399; }
+.fb-err { color: #f87171; }
+
+#sartProgress { font-size: 0.75rem; color: #374151; }
+
+/* ── 完成页 ──────────────────────────────────────────── */
+.complete-icon { font-size: 3.5rem; margin-bottom: 14px; }
+#completionId  { font-weight: 700; color: #2563eb; }
+
+/* ── 响应式（手机）──────────────────────────────────── */
+@media (max-width: 480px) {
+  body { padding: 12px 8px 32px; }
+  .screen { padding: 28px 20px; border-radius: 12px; }
+  h1 { font-size: 1.3rem; }
+  h2 { font-size: 1.1rem; }
+  #countdownNumber { font-size: 4.5rem; }
+  .btn { padding: 12px 28px; width: 100%; }
+  #sartStimulus { width: 200px; height: 200px; }
+}
