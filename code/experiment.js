@@ -191,7 +191,81 @@ document.getElementById('btn-mood-submit').addEventListener('click', () => {
 
   State.mood = { happy: +happy, sad: +sad, smHours: +smHours, smType };
   showScreen('s-sart-intro');
+  _startDemo();
 });
+
+// ════════════════════════════════════════════════════════
+//  SART 演示动画
+// ════════════════════════════════════════════════════════
+let _demoTimer = null;
+
+function _startDemo() {
+  if (_demoTimer) clearTimeout(_demoTimer);
+
+  // 演示序列：[数字, 是否目标]
+  const seq = [4, 6, 3, 5, 3, 7];
+  let i = 0;
+
+  const digitEl    = document.getElementById('demoDigit');
+  const maskEl     = document.getElementById('demoMask');
+  const feedbackEl = document.getElementById('demoFeedback');
+  const keyEl      = document.getElementById('demoKey');
+
+  function reset() {
+    digitEl.style.display = 'none';
+    maskEl.style.display  = 'none';
+    feedbackEl.textContent = '';
+    feedbackEl.style.color = '';
+    keyEl.style.background = '';
+    keyEl.style.color      = '#6b7280';
+    keyEl.style.borderColor = '#374151';
+  }
+
+  function runStep() {
+    reset();
+    const num      = seq[i % seq.length];
+    const isTarget = num === CONFIG.sart.target;
+    const fontSize = CONFIG.sart.fontSizes[
+      Math.floor(Math.random() * CONFIG.sart.fontSizes.length)
+    ];
+
+    // 显示数字
+    digitEl.textContent    = num;
+    digitEl.style.fontSize = fontSize + 'px';
+    digitEl.style.color    = isTarget ? '#f87171' : '#fff';
+    digitEl.style.display  = 'block';
+
+    // 500ms 后：显示反应 + mask
+    _demoTimer = setTimeout(() => {
+      digitEl.style.display = 'none';
+      maskEl.style.display  = 'flex';
+
+      if (!isTarget) {
+        // 按键反应：空格键亮绿
+        feedbackEl.textContent = '✓ 按下空格';
+        feedbackEl.style.color = '#34d399';
+        keyEl.style.background = '#34d399';
+        keyEl.style.color      = '#fff';
+        keyEl.style.borderColor = '#34d399';
+      } else {
+        // 不按：空格键变红
+        feedbackEl.textContent = '✗ 不按（是 3！）';
+        feedbackEl.style.color = '#f87171';
+        keyEl.style.borderColor = '#f87171';
+        keyEl.style.color      = '#f87171';
+      }
+
+      // 700ms 后进入下一题
+      _demoTimer = setTimeout(() => {
+        i++;
+        runStep();
+      }, 700);
+
+    }, 500);
+  }
+
+  runStep();
+}
 
 // ════════════════════════════════════════════════════════
 //  SCREEN 7 → 8: SART 说明 → 练习
