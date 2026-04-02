@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>注意力研究实验</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══ SCREEN 1 · 欢迎 ══════════════════════════════ -->
+<div class="screen active" id="s-welcome">
+  <h1>注意力研究实验</h1>
+  <p>感谢你参与本次研究！</p>
+  <p>本实验共分三个部分：<strong>观看视频 → 情绪问卷 → 注意力任务</strong>，全程约 25–35 分钟。</p>
+  <p>请在安静的环境中独立完成，中途不要使用手机或切换页面。</p>
+  <p class="hint">所有数据匿名保存，仅用于学术研究。</p>
+  <button class="btn" id="btn-start">我准备好了，开始</button>
+</div>
+
+<!-- ══ SCREEN 2 · 倒计时 ════════════════════════════ -->
+<div class="screen" id="s-countdown">
+  <h2>请放松坐好</h2>
+  <p>保持安静，等待实验开始。</p>
+  <div id="countdownNumber">10</div>
+  <p class="hint">倒计时结束后自动进入下一步</p>
+</div>
+
+<!-- ══ SCREEN 3 · 基线问卷 ══════════════════════════ -->
+<div class="screen" id="s-baseline">
+  <h2>开始前的几个小问题</h2>
+  <p class="hint" style="margin-bottom:20px">帮助我们了解你现在的状态，全部必填。</p>
+
+  <div class="q-block">
+    <label for="bl-sleep">昨晚你睡了几个小时？</label>
+    <input type="number" id="bl-sleep" min="0" max="24" placeholder="例如：7">
+  </div>
+
+  <div class="q-block">
+    <label for="bl-activity">过去 30 分钟你主要在做什么？</label>
+    <select id="bl-activity">
+      <option value="">请选择</option>
+      <option value="resting">休息 / 放松</option>
+      <option value="studying">上课 / 学习</option>
+      <option value="light">轻度活动（散步、站立等）</option>
+      <option value="exercise">运动 / 体育活动</option>
+      <option value="other">其他</option>
+    </select>
+  </div>
+
+  <div class="q-block">
+    <label>你现在的精力水平如何？</label>
+    <div class="scale-row">
+      <label><input type="radio" name="bl-energy" value="1"><span>1</span></label>
+      <label><input type="radio" name="bl-energy" value="2"><span>2</span></label>
+      <label><input type="radio" name="bl-energy" value="3"><span>3</span></label>
+      <label><input type="radio" name="bl-energy" value="4"><span>4</span></label>
+      <label><input type="radio" name="bl-energy" value="5"><span>5</span></label>
+    </div>
+    <div class="scale-ends"><span>非常低</span><span>非常高</span></div>
+  </div>
+
+  <div class="q-block">
+    <label>你现在的压力水平如何？</label>
+    <div class="scale-row">
+      <label><input type="radio" name="bl-stress" value="1"><span>1</span></label>
+      <label><input type="radio" name="bl-stress" value="2"><span>2</span></label>
+      <label><input type="radio" name="bl-stress" value="3"><span>3</span></label>
+      <label><input type="radio" name="bl-stress" value="4"><span>4</span></label>
+      <label><input type="radio" name="bl-stress" value="5"><span>5</span></label>
+    </div>
+    <div class="scale-ends"><span>非常低</span><span>非常高</span></div>
+  </div>
+
+  <button class="btn" id="btn-baseline-submit">继续</button>
+</div>
+
+<!-- ══ SCREEN 4 · 视频说明 ══════════════════════════ -->
+<div class="screen" id="s-video-intro">
+  <h2>第一部分：观看视频</h2>
+  <p>接下来你将观看一段视频，请<strong>全程专注观看</strong>，不要切换页面或使用手机。</p>
+  <p>视频结束后会自动进入下一步。</p>
+  <p class="hint" id="video-group-hint"></p>
+  <button class="btn" id="btn-video-start">开始观看</button>
+</div>
+
+<!-- ══ SCREEN 5 · 视频播放 ══════════════════════════ -->
+<div class="screen" id="s-video">
+  <span class="video-group-tag" id="video-group-tag"></span>
+  <div id="videoBox">
+    <iframe id="videoFrame" allowfullscreen
+      allow="autoplay; encrypted-media"
+      src="about:blank">
+    </iframe>
+  </div>
+  <div id="videoTimer">剩余时间：-- : --</div>
+  <div id="videoProgressBar"><div id="videoProgressFill"></div></div>
+  <button class="btn-ghost" id="btn-video-skip">⏭ 跳过（调试用）</button>
+</div>
+
+<!-- ══ SCREEN 6 · 情绪问卷 ══════════════════════════ -->
+<div class="screen" id="s-mood">
+  <h2>第二部分：当前感受</h2>
+  <p class="hint" style="margin-bottom:20px">根据你刚才观看完视频后的真实感受作答。</p>
+
+  <div class="q-block">
+    <label>你现在有多幸福（happy）？</label>
+    <div class="scale-row">
+      <label><input type="radio" name="mood-happy" value="1"><span>1</span></label>
+      <label><input type="radio" name="mood-happy" value="2"><span>2</span></label>
+      <label><input type="radio" name="mood-happy" value="3"><span>3</span></label>
+      <label><input type="radio" name="mood-happy" value="4"><span>4</span></label>
+      <label><input type="radio" name="mood-happy" value="5"><span>5</span></label>
+    </div>
+    <div class="scale-ends"><span>完全不幸福</span><span>非常幸福</span></div>
+  </div>
+
+  <div class="q-block">
+    <label>你现在有多悲伤（sad）？</label>
+    <div class="scale-row">
+      <label><input type="radio" name="mood-sad" value="1"><span>1</span></label>
+      <label><input type="radio" name="mood-sad" value="2"><span>2</span></label>
+      <label><input type="radio" name="mood-sad" value="3"><span>3</span></label>
+      <label><input type="radio" name="mood-sad" value="4"><span>4</span></label>
+      <label><input type="radio" name="mood-sad" value="5"><span>5</span></label>
+    </div>
+    <div class="scale-ends"><span>完全不悲伤</span><span>非常悲伤</span></div>
+  </div>
+
+  <div class="q-block">
+    <label for="sm-hours">你平均每天使用社交媒体（微信/微博/抖音/B站等）大约多少小时？</label>
+    <select id="sm-hours">
+      <option value="">请选择</option>
+      <option value="0">少于 1 小时</option>
+      <option value="1">1–2 小时</option>
+      <option value="2">2–3 小时</option>
+      <option value="3">3–4 小时</option>
+      <option value="4">4 小时以上</option>
+    </select>
+  </div>
+
+  <div class="q-block">
+    <label for="sm-type">你使用社交媒体时，主要是哪种方式？</label>
+    <select id="sm-type">
+      <option value="">请选择</option>
+      <option value="passive">以浏览为主（看内容，很少发布）</option>
+      <option value="active">以发布为主（发帖、评论、互动较多）</option>
+      <option value="both">两者差不多</option>
+    </select>
+  </div>
+
+  <button class="btn" id="btn-mood-submit">继续</button>
+</div>
+
+<!-- ══ SCREEN 7 · SART 说明 ═════════════════════════ -->
+<div class="screen" id="s-sart-intro">
+  <h2>第三部分：注意力任务</h2>
+  <p>屏幕上会快速出现数字 <strong>1 到 9</strong>，每个数字只显示约 <strong>0.25 秒</strong>。</p>
+  <p>
+    👉 看到 <strong>1、2、4、5、6、7、8、9</strong>，请<strong>立刻按空格键</strong>（或点击屏幕）<br>
+    🚫 看到 <strong style="color:#dc2626;font-size:1.2rem">3</strong>，请<strong>不要按任何键</strong>
+  </p>
+  <p>数字消失得很快，反应要尽量<strong>又快又准</strong>。</p>
+  <p class="hint">先做 18 题练习，熟悉节奏后再进入正式测试（225 题，约 4 分钟）。</p>
+  <button class="btn" id="btn-sart-practice">开始练习</button>
+</div>
+
+<!-- ══ SCREEN 8 · SART 测试（练习 & 正式共用）═══════ -->
+<div class="screen" id="s-sart">
+  <div id="sartPhaseLabel"></div>
+  <div class="sart-rule">按空格 / 点击 = 非3 &nbsp;|&nbsp; 不按 = 3</div>
+  <div id="sartStimulus">
+    <span id="sartDigit"></span>
+    <div id="sartMask">✕</div>
+  </div>
+  <div id="sartFeedback"></div>
+  <div id="sartProgress"></div>
+</div>
+
+<!-- ══ SCREEN 9 · 练习完成 ══════════════════════════ -->
+<div class="screen" id="s-sart-break">
+  <h2>练习完成！</h2>
+  <p>正式测试共 <strong>225 题</strong>，约需 4 分钟，规则完全相同。</p>
+  <p>正式测试中<strong>不再显示对错提示</strong>，请保持专注。</p>
+  <button class="btn" id="btn-sart-main">开始正式测试</button>
+</div>
+
+<!-- ══ SCREEN 10 · 完成 ══════════════════════════════ -->
+<div class="screen" id="s-complete">
+  <div class="complete-icon">🎉</div>
+  <h2>实验完成，谢谢你！</h2>
+  <p>你的数据已记录，对本研究非常有帮助。</p>
+  <p class="hint">参与者编号：<span id="completionId"></span></p>
+</div>
+
+<!-- 按顺序加载：config → data → experiment -->
+<script src="config.js"></script>
+<script src="data.js"></script>
+<script src="experiment.js"></script>
+</body>
+</html>
