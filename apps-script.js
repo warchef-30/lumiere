@@ -1,18 +1,13 @@
 /**
  * Lumiere 实验数据收集 · Google Apps Script
  *
- * 部署步骤：
- * 1. 打开 Google Sheets，新建表格，命名为"Lumiere 实验数据"
- * 2. 菜单 → 扩展程序 → Apps Script
- * 3. 将此文件内容完整粘贴，替换原有内容
- * 4. 点击「部署」→「新建部署」
- *    - 类型：Web 应用
- *    - 执行身份：我（你的账号）
- *    - 访问权限：任何人
- * 5. 授权，复制生成的 Web App URL
- * 6. 将 URL 填入 code/config.js 的 sheetsUrl 字段
+ * 修复说明（2026-04-17）：
+ *   将 getActiveSpreadsheet() 替换为 openById()。
+ *   Web App 部署后不存在"当前活跃表格"，getActiveSpreadsheet() 返回 null
+ *   导致 doPost 静默失败，数据无法写入。openById 明确指定目标表格，彻底修复此问题。
  */
 
+const SHEET_ID   = '1UPH9dljYWdKPb_L7e_fh3MO8BSszB-lSvFbyjpVlS0c';
 const SHEET_NAME = 'responses';
 
 const HEADERS = [
@@ -30,24 +25,21 @@ const HEADERS = [
 
 function doPost(e) {
   try {
-    const data  = JSON.parse(e.postData.contents);
+    const data = JSON.parse(e.postData.contents);
     const missing = ['participant_id', 'timestamp'].filter(f => data[f] === undefined);
-    if (missing.length > 0) throw new Error(`Missing required fields: ${missing.join(', ')}`);
-    const ss    = SpreadsheetApp.getActiveSpreadsheet();
+    if (missing.length > 0) throw new Error('Missing required fields: ' + missing.join(', '));
+    // openById 明确指定目标表格，Web App 部署环境下稳定可靠
+    const ss    = SpreadsheetApp.openById(SHEET_ID);
     let   sheet = ss.getSheetByName(SHEET_NAME);
-
     if (!sheet) {
       sheet = ss.insertSheet(SHEET_NAME);
       sheet.appendRow(HEADERS);
       sheet.setFrozenRows(1);
     }
-
     sheet.appendRow(HEADERS.map(k => (data[k] === undefined ? '' : data[k])));
-
     return ContentService
       .createTextOutput(JSON.stringify({ status: 'ok' }))
       .setMimeType(ContentService.MimeType.JSON);
-
   } catch (err) {
     return ContentService
       .createTextOutput(JSON.stringify({ status: 'error', message: err.message }))
