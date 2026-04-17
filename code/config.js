@@ -9,11 +9,11 @@ const CONFIG = {
   // ── 调试开关 ──────────────────────────────────────────
   // true  = 显示视频跳过按钮（本地调试用）
   // false = 隐藏跳过按钮（正式上线用）
-  debug: true,
+  debug: false,
 
   // ── Google Sheets 提交地址 ────────────────────────────
   // 部署 apps-script.js 后，将生成的 Web App URL 填入此处
-  sheetsUrl: 'YOUR_APPS_SCRIPT_URL_HERE',
+  sheetsUrl: 'https://script.google.com/macros/s/AKfycbyeex-SPo3FBMog7t8-zQvTsMKBdueGdVkWi75lJbuXW9ozYSsVaufb02wHf1F5ABXpyg/exec',
 
   // ── 实验分组视频 ──────────────────────────────────────
   // type 'local': src = 本地 MP4 路径数组（相对于 index.html），按顺序播放
