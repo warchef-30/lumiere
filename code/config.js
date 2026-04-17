@@ -16,29 +16,33 @@ const CONFIG = {
   sheetsUrl: 'YOUR_APPS_SCRIPT_URL_HERE',
 
   // ── 实验分组视频 ──────────────────────────────────────
-  // url: YouTube embed 地址，格式 https://www.youtube.com/embed/视频ID
-  // durationSec: 视频时长（秒）
+  // type 'youtube': url = YouTube embed 地址
+  // type 'local':   src = 本地 MP4 路径数组（相对于 index.html），按顺序播放
+  // durationSec: 计时器时长（秒），时间到自动进入下一步
   //
-  // 占位符说明：
-  //   组1/2 需要：竖屏短视频合集，内容轻松、节奏快（模拟刷短视频）
-  //   组3/4 需要：横屏长视频，内容完整连贯（如纪录片、Vlog）
-  //   可从 YouTube 搜索 "short video compilation" 或 "relaxing vlog" 获取视频ID
+  // 组1/2（短视频）：待填入 YouTube Shorts 本地文件
+  // 组3：FermiParadox (~8.9min)，计时 8min
+  // 组4：AllNukesAtOnce (~7.1min) → NukeACity (~9min)，计时 16min
   videos: {
-    1: { url: 'https://www.youtube.com/embed/jNQXAC9IVRw', durationSec: 8  * 60 },
-    2: { url: 'https://www.youtube.com/embed/jNQXAC9IVRw', durationSec: 16 * 60 },
-    3: { url: 'https://www.youtube.com/embed/aqz-KE-bpKQ',  durationSec: 8  * 60 },
-    4: { url: 'https://www.youtube.com/embed/aqz-KE-bpKQ',  durationSec: 16 * 60 },
+    1: { type: 'youtube', url: 'https://www.youtube.com/embed/jNQXAC9IVRw', durationSec: 8  * 60 },
+    2: { type: 'youtube', url: 'https://www.youtube.com/embed/jNQXAC9IVRw', durationSec: 16 * 60 },
+    3: { type: 'local',   src: ['../week6/FermiParadox-6min.mp4'],           durationSec: 8  * 60 },
+    4: { type: 'local',   src: ['../week6/AllNukesAtOnce-7min.mp4',
+                                 '../week6/NukeACity-9min.mp4'],             durationSec: 16 * 60 },
   },
 
-  // ── SART 参数（Robertson et al., 1997，修改版）─────────
-  // digitMs 从原版 250ms 调整为 500ms，适配普通参与者；需在论文 Methods 注明此修改
+  // ── SART 参数（Robertson et al., 1997）──────────────────
+  // digitMs/maskMs 已恢复原版参数（4/4 Lila 邮件确认 + 原文核查）
+  // 每轮节奏：250ms digit + 900ms mask = 1150ms，与原论文一致
   sart: {
-    digitMs:        500,                     // 数字呈现时长（ms）
-    maskMs:         700,                     // circle-cross mask 时长（ms）
+    digitMs:        250,                     // 正式测试：数字呈现时长（ms）
+    maskMs:         900,                     // 正式测试：circle-cross mask 时长（ms）
+    practiceDigitMs: 800,                    // 练习：数字呈现更久，让参与者看清
+    practiceMaskMs:  1000,                   // 练习：mask 停留更久，配合反馈阅读
     fontSizes:      [48, 72, 94, 100, 120],  // 5种字号（px），每题随机选取
     target:         3,                       // no-go 数字（见到不按）
     practiceTrials: 9,                       // 练习题数（每个数字×1）
-    mainTrials:     90,                      // 正式题数（每个数字×10，约1分50秒）
+    mainTrials:     225,                     // 正式题数（每个数字×25，约4分20秒）
   },
 
 };

@@ -8,48 +8,111 @@
 </head>
 <body>
 
+<button id="langToggle">EN</button>
+
+<!-- ══ SCREEN 0 · 知情同意 ══════════════════════════ -->
+<div class="screen active" id="s-consent">
+  <h1 data-i18n="s0_h1">知情同意书</h1>
+
+  <div class="consent-box">
+    <div class="consent-row">
+      <span class="consent-label" data-i18n="s0_researcher_label">学生研究员：</span>
+      <span data-i18n="s0_researcher">Zihe Meng</span>
+    </div>
+    <div class="consent-row">
+      <span class="consent-label" data-i18n="s0_title_label">研究题目：</span>
+      <span data-i18n="s0_title">视频格式和观看时长如何影响注意力和情绪表现？</span>
+    </div>
+
+    <div class="consent-divider"></div>
+
+    <div class="consent-row">
+      <span class="consent-label" data-i18n="s0_purpose_label">研究目的</span>
+      <span data-i18n="s0_purpose">研究视频格式（短视频 vs 长视频）和观看时长对后续注意力表现与主观情绪的影响。</span>
+    </div>
+    <div class="consent-row">
+      <span class="consent-label" data-i18n="s0_tasks_label">参与内容</span>
+      <span data-i18n="s0_tasks">完成一项在线研究（约25分钟）：包括问卷、两项注意力测试，以及观看一段视频。</span>
+    </div>
+    <div class="consent-row">
+      <span class="consent-label" data-i18n="s0_time_label">所需时间</span>
+      <span data-i18n="s0_time">约 25 分钟</span>
+    </div>
+    <div class="consent-row">
+      <span class="consent-label" data-i18n="s0_risks_label">风险</span>
+      <span data-i18n="s0_risks">无预期风险。</span>
+    </div>
+    <div class="consent-row">
+      <span class="consent-label" data-i18n="s0_benefits_label">研究意义</span>
+      <span data-i18n="s0_benefits">为注意力科学研究做出贡献。</span>
+    </div>
+    <div class="consent-row">
+      <span class="consent-label" data-i18n="s0_conf_label">保密性</span>
+      <span data-i18n="s0_conf">所有数据匿名收集，不收集任何个人身份信息。</span>
+    </div>
+
+    <div class="consent-divider"></div>
+
+    <p class="consent-voluntary" data-i18n="s0_voluntary">
+      参与本研究完全自愿。如果你不参与，不会有任何负面影响。参与后你可以随时停止，也可以选择不回答特定问题。
+    </p>
+    <p class="consent-contact">
+      <span data-i18n="s0_contact_label">如有疑问，请联系：</span>
+      <a href="mailto:lila.davachi@gmail.com">lila.davachi@gmail.com</a>
+      <span data-i18n="s0_contact_name">（Lila Davachi 教授）</span>
+    </p>
+  </div>
+
+  <label class="consent-check">
+    <input type="checkbox" id="consent-checkbox">
+    <span data-i18n="s0_agree_text">我已阅读并理解以上信息，自愿同意参与本研究。</span>
+  </label>
+
+  <button class="btn" id="btn-consent" disabled data-i18n="btn_consent">同意并继续</button>
+</div>
+
 <!-- ══ SCREEN 1 · 欢迎 ══════════════════════════════ -->
-<div class="screen active" id="s-welcome">
-  <h1>注意力研究实验</h1>
-  <p>感谢你参与本次研究！</p>
-  <p>本实验共分三个部分：<strong>观看视频 → 情绪问卷 → 注意力任务</strong>，全程约 25–35 分钟。</p>
-  <p>请在安静的环境中独立完成，中途不要使用手机或切换页面。</p>
-  <p class="hint">所有数据匿名保存，仅用于学术研究。</p>
-  <button class="btn" id="btn-start">我准备好了，开始</button>
+<div class="screen" id="s-welcome">
+  <h1 data-i18n="s1_h1">注意力研究实验</h1>
+  <p data-i18n="s1_p1">感谢你参与本次研究！</p>
+  <p data-i18n-html="s1_p2">本实验包括：<strong>注意力测试 → 观看视频 → 注意力测试 → 简短问卷</strong>，全程约 25–35 分钟。</p>
+  <p data-i18n="s1_p3">请在安静的环境中独立完成，中途不要使用手机或切换页面。</p>
+  <p class="hint" data-i18n="s1_hint">所有数据匿名保存，仅用于学术研究。</p>
+  <button class="btn" id="btn-start" data-i18n="btn_start">我准备好了，开始</button>
 </div>
 
 <!-- ══ SCREEN 2 · 倒计时 ════════════════════════════ -->
 <div class="screen" id="s-countdown">
-  <h2>请放松坐好</h2>
-  <p>保持安静，等待实验开始。</p>
+  <h2 data-i18n="s2_h2">请放松坐好</h2>
+  <p data-i18n="s2_p">保持安静，等待实验开始。</p>
   <div id="countdownNumber">10</div>
-  <p class="hint">倒计时结束后自动进入下一步</p>
+  <p class="hint" data-i18n="s2_hint">倒计时结束后自动进入下一步</p>
 </div>
 
 <!-- ══ SCREEN 3 · 基线问卷 ══════════════════════════ -->
 <div class="screen" id="s-baseline">
-  <h2>开始前的几个小问题</h2>
-  <p class="hint" style="margin-bottom:20px">帮助我们了解你现在的状态，全部必填。</p>
+  <h2 data-i18n="s3_h2">开始前的几个小问题</h2>
+  <p class="hint" style="margin-bottom:20px" data-i18n="s3_hint">帮助我们了解你现在的状态，全部必填。</p>
 
   <div class="q-block">
-    <label for="bl-sleep">昨晚你睡了几个小时？</label>
-    <input type="number" id="bl-sleep" min="0" max="24" placeholder="例如：7">
+    <label for="bl-sleep" data-i18n="bl_sleep_label">昨晚你睡了几个小时？</label>
+    <input type="number" id="bl-sleep" min="0" max="24" placeholder="例如：7" data-i18n-placeholder="bl_sleep_ph">
   </div>
 
   <div class="q-block">
-    <label for="bl-activity">过去 30 分钟你主要在做什么？</label>
+    <label for="bl-activity" data-i18n="bl_activity_label">过去 30 分钟你主要在做什么？</label>
     <select id="bl-activity">
-      <option value="">请选择</option>
-      <option value="resting">休息 / 放松</option>
-      <option value="studying">上课 / 学习</option>
-      <option value="light">轻度活动（散步、站立等）</option>
-      <option value="exercise">运动 / 体育活动</option>
-      <option value="other">其他</option>
+      <option value="" data-i18n="opt_select">请选择</option>
+      <option value="resting" data-i18n="opt_resting">休息 / 放松</option>
+      <option value="studying" data-i18n="opt_studying">上课 / 学习</option>
+      <option value="light" data-i18n="opt_light">轻度活动（散步、站立等）</option>
+      <option value="exercise" data-i18n="opt_exercise">运动 / 体育活动</option>
+      <option value="other" data-i18n="opt_other">其他</option>
     </select>
   </div>
 
   <div class="q-block">
-    <label>你现在的精力水平如何？</label>
+    <label data-i18n="bl_energy_label">你现在的精力水平如何？</label>
     <div class="scale-row">
       <label><input type="radio" name="bl-energy" value="1"><span>1</span></label>
       <label><input type="radio" name="bl-energy" value="2"><span>2</span></label>
@@ -57,11 +120,11 @@
       <label><input type="radio" name="bl-energy" value="4"><span>4</span></label>
       <label><input type="radio" name="bl-energy" value="5"><span>5</span></label>
     </div>
-    <div class="scale-ends"><span>非常低</span><span>非常高</span></div>
+    <div class="scale-ends"><span data-i18n="scale_low">非常低</span><span data-i18n="scale_high">非常高</span></div>
   </div>
 
   <div class="q-block">
-    <label>你现在的压力水平如何？</label>
+    <label data-i18n="bl_stress_label">你现在的压力水平如何？</label>
     <div class="scale-row">
       <label><input type="radio" name="bl-stress" value="1"><span>1</span></label>
       <label><input type="radio" name="bl-stress" value="2"><span>2</span></label>
@@ -69,103 +132,37 @@
       <label><input type="radio" name="bl-stress" value="4"><span>4</span></label>
       <label><input type="radio" name="bl-stress" value="5"><span>5</span></label>
     </div>
-    <div class="scale-ends"><span>非常低</span><span>非常高</span></div>
+    <div class="scale-ends"><span data-i18n="scale_low">非常低</span><span data-i18n="scale_high">非常高</span></div>
   </div>
 
-  <button class="btn" id="btn-baseline-submit">继续</button>
+  <button class="btn" id="btn-baseline-submit" data-i18n="btn_continue">继续</button>
 </div>
 
-<!-- ══ SCREEN 4 · 视频说明 ══════════════════════════ -->
-<div class="screen" id="s-video-intro">
-  <h2>第一部分：观看视频</h2>
-  <p>接下来你将观看一段视频，请<strong>全程专注观看</strong>，不要切换页面或使用手机。</p>
-  <p>视频结束后会自动进入下一步。</p>
-  <p class="hint" id="video-group-hint"></p>
-  <button class="btn" id="btn-video-start">开始观看</button>
-</div>
-
-<!-- ══ SCREEN 5 · 视频播放 ══════════════════════════ -->
-<div class="screen" id="s-video">
-  <span class="video-group-tag" id="video-group-tag"></span>
-  <div id="videoBox">
-    <iframe id="videoFrame" allowfullscreen
-      allow="autoplay; encrypted-media"
-      src="about:blank">
-    </iframe>
-  </div>
-  <div id="videoTimer">剩余时间：-- : --</div>
-  <div id="videoProgressBar"><div id="videoProgressFill"></div></div>
-  <button class="btn-ghost" id="btn-video-skip">⏭ 跳过（调试用）</button>
-</div>
-
-<!-- ══ SCREEN 6 · 情绪问卷 ══════════════════════════ -->
-<div class="screen" id="s-mood">
-  <h2>第二部分：当前感受</h2>
-  <p class="hint" style="margin-bottom:20px">根据你刚才观看完视频后的真实感受作答。</p>
-
-  <div class="q-block">
-    <label>你现在有多幸福（happy）？</label>
-    <div class="scale-row">
-      <label><input type="radio" name="mood-happy" value="1"><span>1</span></label>
-      <label><input type="radio" name="mood-happy" value="2"><span>2</span></label>
-      <label><input type="radio" name="mood-happy" value="3"><span>3</span></label>
-      <label><input type="radio" name="mood-happy" value="4"><span>4</span></label>
-      <label><input type="radio" name="mood-happy" value="5"><span>5</span></label>
-    </div>
-    <div class="scale-ends"><span>完全不幸福</span><span>非常幸福</span></div>
-  </div>
-
-  <div class="q-block">
-    <label>你现在有多悲伤（sad）？</label>
-    <div class="scale-row">
-      <label><input type="radio" name="mood-sad" value="1"><span>1</span></label>
-      <label><input type="radio" name="mood-sad" value="2"><span>2</span></label>
-      <label><input type="radio" name="mood-sad" value="3"><span>3</span></label>
-      <label><input type="radio" name="mood-sad" value="4"><span>4</span></label>
-      <label><input type="radio" name="mood-sad" value="5"><span>5</span></label>
-    </div>
-    <div class="scale-ends"><span>完全不悲伤</span><span>非常悲伤</span></div>
-  </div>
-
-  <div class="q-block">
-    <label for="sm-hours">你平均每天使用社交媒体（微信/微博/抖音/B站等）大约多少小时？</label>
-    <select id="sm-hours">
-      <option value="">请选择</option>
-      <option value="0">少于 1 小时</option>
-      <option value="1">1–2 小时</option>
-      <option value="2">2–3 小时</option>
-      <option value="3">3–4 小时</option>
-      <option value="4">4 小时以上</option>
-    </select>
-  </div>
-
-  <div class="q-block">
-    <label for="sm-type">你使用社交媒体时，主要是哪种方式？</label>
-    <select id="sm-type">
-      <option value="">请选择</option>
-      <option value="passive">以浏览为主（看内容，很少发布）</option>
-      <option value="active">以发布为主（发帖、评论、互动较多）</option>
-      <option value="both">两者差不多</option>
-    </select>
-  </div>
-
-  <button class="btn" id="btn-mood-submit">继续</button>
-</div>
-
-<!-- ══ SCREEN 7 · SART 说明 ═════════════════════════ -->
+<!-- ══ SCREEN 4 · SART 说明（纯文字，无演示）═══════════ -->
 <div class="screen" id="s-sart-intro">
-  <h2>第三部分：注意力任务</h2>
-  <p>
+  <h2 data-i18n="s_intro_h2">注意力任务说明</h2>
+  <p data-i18n="s_intro_p1">接下来你将完成一项注意力测试。屏幕中央会依次快速出现数字 1–9。</p>
+  <p data-i18n-html="sart_rule_html">
     👉 看到 <strong>1、2、4、5、6、7、8、9</strong>，请<strong>立刻按空格键</strong>（或点击屏幕）<br>
     🚫 看到 <strong style="color:#dc2626;font-size:1.2rem">3</strong>，请<strong>不要按任何键</strong>
   </p>
+  <p data-i18n-html="s_intro_p2">请尽可能快且准确地做出反应。每个数字只出现很短时间。<br>⭕ 数字消失后会出现一个带 ✕ 的圆圈（⊗），用于消除上一个数字的残影，防止残影对你判断下一题造成干扰。看到它时无需操作，等待下一个数字即可。</p>
+  <p class="hint" data-i18n="s_intro_hint">请先仔细阅读规则，下一页将展示演示动画和练习。</p>
+  <button class="btn" id="btn-sart-next" data-i18n="btn_continue">继续</button>
+</div>
+
+<!-- ══ SCREEN 5 · SART 演示 + 练习入口 ═════════════════ -->
+<div class="screen" id="s-sart-demo">
+  <h2 data-i18n="s_demo_h2">演示与练习</h2>
+  <p data-i18n="s_demo_p">观看下方演示，了解任务节奏：</p>
 
   <!-- 演示动画 -->
   <div id="demoWrap" style="
-    background:#111; border-radius:12px; padding:20px 16px 16px;
-    margin:16px 0; display:flex; flex-direction:column; align-items:center; gap:12px;
+    background:#111; border-radius:12px; padding:16px 12px 12px;
+    margin:16px 0; display:flex; flex-direction:column; align-items:center; gap:10px;
   ">
-    <div style="font-size:0.7rem;color:#4b5563;letter-spacing:0.08em;text-transform:uppercase">演示</div>
+    <div style="font-size:0.7rem;color:#4b5563;letter-spacing:0.08em;text-transform:uppercase" data-i18n="demo_label">演示</div>
+
     <!-- 数字显示区 -->
     <div id="demoStimulus" style="
       width:100px; height:100px; display:flex; align-items:center; justify-content:center;
@@ -178,24 +175,91 @@
         color:#fff; font-size:1.8rem; font-weight:300;
       ">✕</div>
     </div>
+
     <!-- 反应提示 -->
     <div id="demoFeedback" style="font-size:0.85rem;font-weight:600;min-height:18px"></div>
-    <!-- 空格键图形 -->
-    <div id="demoKey" style="
-      border:2px solid #374151; border-bottom-width:4px; border-radius:6px;
-      padding:6px 32px; color:#6b7280; font-size:0.75rem;
-      transition:all 0.1s; user-select:none;
-    ">空格</div>
+
+    <!-- 完整虚拟键盘 -->
+    <div class="kb" id="demoKeyboard">
+      <div class="kb-row">
+        <div class="kb-key">`</div>
+        <div class="kb-key">1</div>
+        <div class="kb-key">2</div>
+        <div class="kb-key" id="demoKey3">3</div>
+        <div class="kb-key">4</div>
+        <div class="kb-key">5</div>
+        <div class="kb-key">6</div>
+        <div class="kb-key">7</div>
+        <div class="kb-key">8</div>
+        <div class="kb-key">9</div>
+        <div class="kb-key">0</div>
+        <div class="kb-key">-</div>
+        <div class="kb-key">=</div>
+        <div class="kb-key" style="flex:1.8">⌫</div>
+      </div>
+      <div class="kb-row">
+        <div class="kb-key" style="flex:1.5">Tab</div>
+        <div class="kb-key">Q</div>
+        <div class="kb-key">W</div>
+        <div class="kb-key">E</div>
+        <div class="kb-key">R</div>
+        <div class="kb-key">T</div>
+        <div class="kb-key">Y</div>
+        <div class="kb-key">U</div>
+        <div class="kb-key">I</div>
+        <div class="kb-key">O</div>
+        <div class="kb-key">P</div>
+        <div class="kb-key">[</div>
+        <div class="kb-key">]</div>
+        <div class="kb-key" style="flex:1.5">\</div>
+      </div>
+      <div class="kb-row">
+        <div class="kb-key" style="flex:1.75">Caps</div>
+        <div class="kb-key">A</div>
+        <div class="kb-key">S</div>
+        <div class="kb-key">D</div>
+        <div class="kb-key">F</div>
+        <div class="kb-key">G</div>
+        <div class="kb-key">H</div>
+        <div class="kb-key">J</div>
+        <div class="kb-key">K</div>
+        <div class="kb-key">L</div>
+        <div class="kb-key">;</div>
+        <div class="kb-key">'</div>
+        <div class="kb-key" style="flex:2.25">↵</div>
+      </div>
+      <div class="kb-row">
+        <div class="kb-key" style="flex:2.25">⇧</div>
+        <div class="kb-key">Z</div>
+        <div class="kb-key">X</div>
+        <div class="kb-key">C</div>
+        <div class="kb-key">V</div>
+        <div class="kb-key">B</div>
+        <div class="kb-key">N</div>
+        <div class="kb-key">M</div>
+        <div class="kb-key">,</div>
+        <div class="kb-key">.</div>
+        <div class="kb-key">/</div>
+        <div class="kb-key" style="flex:2.75">⇧</div>
+      </div>
+      <div class="kb-row">
+        <div class="kb-key" style="flex:1.5">Ctrl</div>
+        <div class="kb-key" style="flex:1.2">Alt</div>
+        <div class="kb-key kb-key--space" style="flex:7" id="demoSpacebar" data-i18n="key_space">SPACE</div>
+        <div class="kb-key" style="flex:1.2">Alt</div>
+        <div class="kb-key" style="flex:1.5">Ctrl</div>
+      </div>
+    </div>
   </div>
 
-  <p class="hint">先做 9 题练习，熟悉节奏后再进入正式测试（90 题，约 2 分钟）。</p>
-  <button class="btn" id="btn-sart-practice">开始练习</button>
+  <p class="hint" data-i18n="s_demo_hint">先做 9 题练习，熟悉节奏后再进入正式测试。</p>
+  <button class="btn" id="btn-sart-practice" data-i18n="btn_practice">开始练习</button>
 </div>
 
-<!-- ══ SCREEN 8 · SART 测试（练习 & 正式共用）═══════ -->
+<!-- ══ SCREEN 6 · SART 测试（练习 / Pre / Post 共用）════ -->
 <div class="screen" id="s-sart">
   <div id="sartPhaseLabel"></div>
-  <div class="sart-rule">按空格 / 点击 = 非3 &nbsp;|&nbsp; 不按 = 3</div>
+  <div class="sart-rule" data-i18n-html="sart_rule_short">按空格 / 点击 = 非3 &nbsp;|&nbsp; 不按 = 3</div>
   <div id="sartStimulus">
     <span id="sartDigit"></span>
     <div id="sartMask">✕</div>
@@ -204,40 +268,207 @@
   <div id="sartProgress"></div>
 </div>
 
-<!-- ══ SCREEN 9 · 练习完成 ══════════════════════════ -->
-<div class="screen" id="s-sart-break">
-  <h2>练习完成！</h2>
-  <p>正式测试共 <strong>90 题</strong>，约需 2 分钟，规则完全相同。</p>
-  <p>正式测试中<strong>不再显示对错提示</strong>，请保持专注。</p>
-  <button class="btn" id="btn-sart-main">开始正式测试</button>
+<!-- ══ SCREEN 7 · 练习完成 → Pre-SART ══════════════════ -->
+<div class="screen" id="s-sart-break-pre">
+  <h2 data-i18n="s_break_pre_h2">练习完成！</h2>
+  <p data-i18n-html="s_break_pre_p1">正式测试共 <strong>225 题</strong>，约需 4 分钟，规则完全相同。</p>
+  <p data-i18n-html="s_break_pre_p2">正式测试中<strong>不再显示对错提示</strong>，请保持专注。</p>
+  <button class="btn" id="btn-pre-sart" data-i18n="btn_pre_sart">开始正式测试</button>
 </div>
 
-<!-- ══ SCREEN 10 · 完成 ══════════════════════════════ -->
+<!-- ══ SCREEN 8 · 视频说明 ══════════════════════════ -->
+<div class="screen" id="s-video-intro">
+  <h2 data-i18n="s_video_h2">观看视频</h2>
+  <p data-i18n-html="s_video_p1">接下来你将观看一段视频，请<strong>全程专注观看</strong>，不要切换页面或使用手机。</p>
+  <p data-i18n="s_video_p2">视频结束后会自动进入下一步。</p>
+  <p class="hint" id="video-group-hint"></p>
+  <button class="btn" id="btn-video-start" data-i18n="btn_video_start">开始观看</button>
+</div>
+
+<!-- ══ SCREEN 9 · 视频播放 ══════════════════════════ -->
+<div class="screen" id="s-video">
+  <span class="video-group-tag" id="video-group-tag"></span>
+  <div id="videoBox">
+    <iframe id="videoFrame" allowfullscreen
+      allow="autoplay; encrypted-media"
+      src="about:blank"
+      style="display:none">
+    </iframe>
+    <video id="videoPlayer" style="display:none"></video>
+  </div>
+  <div id="videoTimer">剩余时间：-- : --</div>
+  <div id="videoProgressBar"><div id="videoProgressFill"></div></div>
+  <button class="btn-ghost" id="btn-video-skip" data-i18n="btn_video_skip">⏭ 跳过（调试用）</button>
+</div>
+
+<!-- ══ SCREEN 10 · 情绪问卷（happy / sad / energetic）══ -->
+<div class="screen" id="s-mood">
+  <h2 data-i18n="s_mood_h2">当前感受</h2>
+  <p class="hint" style="margin-bottom:20px" data-i18n="s_mood_hint">根据你刚才观看完视频后的真实感受作答。</p>
+
+  <div class="q-block">
+    <label data-i18n="mood_happy_label">你现在有多幸福（happy）？</label>
+    <div class="scale-row">
+      <label><input type="radio" name="mood-happy" value="1"><span>1</span></label>
+      <label><input type="radio" name="mood-happy" value="2"><span>2</span></label>
+      <label><input type="radio" name="mood-happy" value="3"><span>3</span></label>
+      <label><input type="radio" name="mood-happy" value="4"><span>4</span></label>
+      <label><input type="radio" name="mood-happy" value="5"><span>5</span></label>
+    </div>
+    <div class="scale-ends"><span data-i18n="scale_not_happy">完全不幸福</span><span data-i18n="scale_very_happy">非常幸福</span></div>
+  </div>
+
+  <div class="q-block">
+    <label data-i18n="mood_sad_label">你现在有多悲伤（sad）？</label>
+    <div class="scale-row">
+      <label><input type="radio" name="mood-sad" value="1"><span>1</span></label>
+      <label><input type="radio" name="mood-sad" value="2"><span>2</span></label>
+      <label><input type="radio" name="mood-sad" value="3"><span>3</span></label>
+      <label><input type="radio" name="mood-sad" value="4"><span>4</span></label>
+      <label><input type="radio" name="mood-sad" value="5"><span>5</span></label>
+    </div>
+    <div class="scale-ends"><span data-i18n="scale_not_sad">完全不悲伤</span><span data-i18n="scale_very_sad">非常悲伤</span></div>
+  </div>
+
+  <div class="q-block">
+    <label data-i18n="mood_energetic_label">你现在有多兴奋/精力充沛（energetic）？</label>
+    <div class="scale-row">
+      <label><input type="radio" name="mood-energetic" value="1"><span>1</span></label>
+      <label><input type="radio" name="mood-energetic" value="2"><span>2</span></label>
+      <label><input type="radio" name="mood-energetic" value="3"><span>3</span></label>
+      <label><input type="radio" name="mood-energetic" value="4"><span>4</span></label>
+      <label><input type="radio" name="mood-energetic" value="5"><span>5</span></label>
+    </div>
+    <div class="scale-ends"><span data-i18n="scale_not_energetic">完全没有</span><span data-i18n="scale_very_energetic">非常兴奋</span></div>
+  </div>
+
+  <button class="btn" id="btn-mood-submit" data-i18n="btn_continue">继续</button>
+</div>
+
+<!-- ══ SCREEN 11 · Post-SART 过渡 ══════════════════════ -->
+<div class="screen" id="s-sart-transition">
+  <h2 data-i18n="s_trans_h2">第二轮注意力测试</h2>
+  <p data-i18n-html="s_trans_p1">接下来是第二轮注意力测试，共 <strong>225 题</strong>，规则与之前完全相同。</p>
+  <p data-i18n-html="s_trans_p2">测试中<strong>不显示对错提示</strong>，请保持专注。</p>
+  <button class="btn" id="btn-post-sart" data-i18n="btn_post_sart">开始测试</button>
+</div>
+
+<!-- ══ SCREEN 12 · 基本信息问卷 ════════════════════════ -->
+<div class="screen" id="s-demographics">
+  <h2 data-i18n="s_demog_h2">最后几个问题</h2>
+  <p class="hint" style="margin-bottom:20px" data-i18n="s_demog_hint">帮助我们更好地分析数据。</p>
+
+  <div class="q-block">
+    <label for="sm-hours" data-i18n="sm_hours_label">你平均每天使用社交媒体（微信/微博/抖音/B站等）大约多少小时？</label>
+    <select id="sm-hours">
+      <option value="" data-i18n="opt_select">请选择</option>
+      <option value="0" data-i18n="opt_less1h">少于 1 小时</option>
+      <option value="1" data-i18n="opt_1_2h">1–2 小时</option>
+      <option value="2" data-i18n="opt_2_3h">2–3 小时</option>
+      <option value="3" data-i18n="opt_3_4h">3–4 小时</option>
+      <option value="4" data-i18n="opt_4h_plus">4 小时以上</option>
+    </select>
+  </div>
+
+  <div class="q-block">
+    <label for="sm-type" data-i18n="sm_type_label">你使用社交媒体时，主要是哪种方式？</label>
+    <select id="sm-type">
+      <option value="" data-i18n="opt_select">请选择</option>
+      <option value="passive" data-i18n="opt_passive">以浏览为主（看内容，很少发布）</option>
+      <option value="active" data-i18n="opt_active">以发布为主（发帖、评论、互动较多）</option>
+      <option value="both" data-i18n="opt_both">两者差不多</option>
+    </select>
+  </div>
+
+  <div class="q-block">
+    <label for="vg-hours" data-i18n="vg_hours_label">你平均每天玩电子游戏大约多少小时？</label>
+    <select id="vg-hours">
+      <option value="" data-i18n="opt_select">请选择</option>
+      <option value="0" data-i18n="opt_none">不玩</option>
+      <option value="0.5" data-i18n="opt_less1h">少于 1 小时</option>
+      <option value="1" data-i18n="opt_1_2h">1–2 小时</option>
+      <option value="2" data-i18n="opt_2_3h">2–3 小时</option>
+      <option value="3" data-i18n="opt_3h_plus">3 小时以上</option>
+    </select>
+  </div>
+
+  <div class="q-block">
+    <label for="demo-age" data-i18n="demog_age_label">你的年龄</label>
+    <input type="number" id="demo-age" min="10" max="99" placeholder="例如：17" data-i18n-placeholder="demog_age_ph">
+  </div>
+
+  <div class="q-block">
+    <label for="demo-gender" data-i18n="demog_gender_label">你的性别</label>
+    <select id="demo-gender">
+      <option value="" data-i18n="opt_select">请选择</option>
+      <option value="male" data-i18n="opt_male">男</option>
+      <option value="female" data-i18n="opt_female">女</option>
+      <option value="nonbinary" data-i18n="opt_nonbinary">非二元</option>
+      <option value="prefer_not" data-i18n="opt_prefer_not">不愿透露</option>
+    </select>
+  </div>
+
+  <div class="q-block">
+    <label for="demo-location" data-i18n="demog_location_label">你目前所在的地区</label>
+    <select id="demo-location">
+      <option value="" data-i18n="opt_select">请选择</option>
+      <option value="china" data-i18n="opt_china">中国</option>
+      <option value="us" data-i18n="opt_us">美国</option>
+      <option value="other" data-i18n="opt_location_other">其他</option>
+    </select>
+  </div>
+
+  <div class="q-block">
+    <label for="demo-email" data-i18n="demog_email_label">邮箱（可选）</label>
+    <input type="email" id="demo-email" placeholder="留下邮箱，论文发表后将结果发送给你" data-i18n-placeholder="demog_email_ph">
+    <p class="hint" style="margin-top:4px" data-i18n="demog_email_hint">此项为可选，不填不影响提交。</p>
+  </div>
+
+  <button class="btn" id="btn-demo-submit" data-i18n="btn_submit">提交</button>
+</div>
+
+<!-- ══ SCREEN 13 · 完成 ══════════════════════════════ -->
 <div class="screen" id="s-complete">
   <div class="complete-icon">🎉</div>
-  <h2>实验完成，谢谢你！</h2>
-  <p>你的数据已记录，对本研究非常有帮助。</p>
+  <h2 data-i18n="s_complete_h2">实验完成，谢谢你！</h2>
+  <p data-i18n="s_complete_p">你的数据已记录，对本研究非常有帮助。</p>
   <div id="scoreCard" style="
     background:#f0f7ff; border-radius:12px; padding:20px 24px;
     margin:20px 0; text-align:left;
   ">
-    <p style="font-weight:700;color:#1a1a1a;margin-bottom:12px;">你的注意力表现</p>
+    <p style="font-weight:700;color:#1a1a1a;margin-bottom:12px;" data-i18n="score_title">你的注意力表现</p>
+    <p style="font-size:0.8rem;color:#6b7280;margin-bottom:8px;" data-i18n="score_pre_label">视频前（Pre-SART）</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
+      <div style="flex:1;min-width:80px;text-align:center;background:#fff;border-radius:8px;padding:12px;">
+        <div style="font-size:1.5rem;font-weight:800;color:#2563eb" id="preAccuracy">—</div>
+        <div style="font-size:0.7rem;color:#6b7280;margin-top:4px" data-i18n="score_accuracy">准确率</div>
+      </div>
+      <div style="flex:1;min-width:80px;text-align:center;background:#fff;border-radius:8px;padding:12px;">
+        <div style="font-size:1.5rem;font-weight:800;color:#2563eb" id="preMeanRT">—</div>
+        <div style="font-size:0.7rem;color:#6b7280;margin-top:4px" data-i18n="score_mean_rt">平均反应时</div>
+      </div>
+      <div style="flex:1;min-width:80px;text-align:center;background:#fff;border-radius:8px;padding:12px;">
+        <div style="font-size:1.5rem;font-weight:800;color:#2563eb" id="preErrors">—</div>
+        <div style="font-size:0.7rem;color:#6b7280;margin-top:4px" data-i18n="score_errors">误按次数</div>
+      </div>
+    </div>
+    <p style="font-size:0.8rem;color:#6b7280;margin-bottom:8px;" data-i18n="score_post_label">视频后（Post-SART）</p>
     <div style="display:flex;gap:16px;flex-wrap:wrap;">
-      <div style="flex:1;min-width:100px;text-align:center;background:#fff;border-radius:8px;padding:12px;">
-        <div style="font-size:1.8rem;font-weight:800;color:#2563eb" id="scoreAccuracy">—</div>
-        <div style="font-size:0.75rem;color:#6b7280;margin-top:4px">准确率</div>
+      <div style="flex:1;min-width:80px;text-align:center;background:#fff;border-radius:8px;padding:12px;">
+        <div style="font-size:1.5rem;font-weight:800;color:#059669" id="postAccuracy">—</div>
+        <div style="font-size:0.7rem;color:#6b7280;margin-top:4px" data-i18n="score_accuracy">准确率</div>
       </div>
-      <div style="flex:1;min-width:100px;text-align:center;background:#fff;border-radius:8px;padding:12px;">
-        <div style="font-size:1.8rem;font-weight:800;color:#2563eb" id="scoreMeanRT">—</div>
-        <div style="font-size:0.75rem;color:#6b7280;margin-top:4px">平均反应时</div>
+      <div style="flex:1;min-width:80px;text-align:center;background:#fff;border-radius:8px;padding:12px;">
+        <div style="font-size:1.5rem;font-weight:800;color:#059669" id="postMeanRT">—</div>
+        <div style="font-size:0.7rem;color:#6b7280;margin-top:4px" data-i18n="score_mean_rt">平均反应时</div>
       </div>
-      <div style="flex:1;min-width:100px;text-align:center;background:#fff;border-radius:8px;padding:12px;">
-        <div style="font-size:1.8rem;font-weight:800;color:#2563eb" id="scoreErrors">—</div>
-        <div style="font-size:0.75rem;color:#6b7280;margin-top:4px">误按次数</div>
+      <div style="flex:1;min-width:80px;text-align:center;background:#fff;border-radius:8px;padding:12px;">
+        <div style="font-size:1.5rem;font-weight:800;color:#059669" id="postErrors">—</div>
+        <div style="font-size:0.7rem;color:#6b7280;margin-top:4px" data-i18n="score_errors">误按次数</div>
       </div>
     </div>
   </div>
-  <p class="hint">参与者编号：<span id="completionId"></span></p>
+  <p class="hint"><span data-i18n="s_complete_id">参与者编号：</span><span id="completionId"></span></p>
 </div>
 
 <!-- 按顺序加载：config → data → experiment -->
