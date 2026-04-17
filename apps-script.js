@@ -18,10 +18,14 @@ const SHEET_NAME = 'responses';
 const HEADERS = [
   'participant_id', 'timestamp', 'group', 'group_label',
   'bl_sleep', 'bl_activity', 'bl_energy', 'bl_stress',
-  'mood_happy', 'mood_sad', 'sm_hours', 'sm_type',
-  'sart_commission_errors', 'sart_omission_errors',
-  'sart_mean_rt_ms', 'sart_sdrt_ms',
-  'tab_switched', 'sart_trials',
+  'mood_happy', 'mood_sad', 'mood_energetic',
+  'pre_sart_commission_errors', 'pre_sart_omission_errors',
+  'pre_sart_mean_rt_ms', 'pre_sart_sdrt_ms',
+  'post_sart_commission_errors', 'post_sart_omission_errors',
+  'post_sart_mean_rt_ms', 'post_sart_sdrt_ms',
+  'sm_hours', 'sm_type', 'videogame_hours',
+  'age', 'gender', 'location', 'email',
+  'tab_switched', 'pre_sart_trials', 'post_sart_trials'
 ];
 
 function doPost(e) {
