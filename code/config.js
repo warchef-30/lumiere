@@ -16,19 +16,66 @@ const CONFIG = {
   sheetsUrl: 'YOUR_APPS_SCRIPT_URL_HERE',
 
   // ── 实验分组视频 ──────────────────────────────────────
-  // type 'youtube': url = YouTube embed 地址
-  // type 'local':   src = 本地 MP4 路径数组（相对于 index.html），按顺序播放
-  // durationSec: 计时器时长（秒），时间到自动进入下一步
+  // type 'local': src = 本地 MP4 路径数组（相对于 index.html），按顺序播放
+  // durationSec: 视频实际总时长（秒），播放结束后自动进入下一步
   //
-  // 组1/2（短视频）：待填入 YouTube Shorts 本地文件
-  // 组3：FermiParadox (~8.9min)，计时 8min
-  // 组4：AllNukesAtOnce (~7.1min) → NukeACity (~9min)，计时 16min
+  // 组1（短视频 7min）：s01–s10，实际 363s
+  // 组2（短视频 14min）：s01–s20，实际 826s
+  // 组3（长视频 7min）：FermiParadox-6min.mp4，实际 380s
+  // 组4（长视频 14min）：SubwaySurfurs-13min.mp4，实际 813s
   videos: {
-    1: { type: 'youtube', url: 'https://www.youtube.com/embed/jNQXAC9IVRw', durationSec: 8  * 60 },
-    2: { type: 'youtube', url: 'https://www.youtube.com/embed/jNQXAC9IVRw', durationSec: 16 * 60 },
-    3: { type: 'local',   src: ['../week6/FermiParadox-6min.mp4'],           durationSec: 8  * 60 },
-    4: { type: 'local',   src: ['../week6/AllNukesAtOnce-7min.mp4',
-                                 '../week6/NukeACity-9min.mp4'],             durationSec: 16 * 60 },
+    1: {
+      type: 'local',
+      src: [
+        '../videos/short/s01.mp4',
+        '../videos/short/s02.mp4',
+        '../videos/short/s03.mp4',
+        '../videos/short/s04.mp4',
+        '../videos/short/s05.mp4',
+        '../videos/short/s06.mp4',
+        '../videos/short/s07.mp4',
+        '../videos/short/s08.mp4',
+        '../videos/short/s09.mp4',
+        '../videos/short/s10.mp4'
+      ],
+      durationSec: 363
+    },
+    2: {
+      type: 'local',
+      src: [
+        '../videos/short/s01.mp4',
+        '../videos/short/s02.mp4',
+        '../videos/short/s03.mp4',
+        '../videos/short/s04.mp4',
+        '../videos/short/s05.mp4',
+        '../videos/short/s06.mp4',
+        '../videos/short/s07.mp4',
+        '../videos/short/s08.mp4',
+        '../videos/short/s09.mp4',
+        '../videos/short/s10.mp4',
+        '../videos/short/s11.mp4',
+        '../videos/short/s12.mp4',
+        '../videos/short/s13.mp4',
+        '../videos/short/s14.mp4',
+        '../videos/short/s15.mp4',
+        '../videos/short/s16.mp4',
+        '../videos/short/s17.mp4',
+        '../videos/short/s18.mp4',
+        '../videos/short/s19.mp4',
+        '../videos/short/s20.mp4'
+      ],
+      durationSec: 826
+    },
+    3: {
+      type: 'local',
+      src: ['../videos/long/FermiParadox-6min.mp4'],
+      durationSec: 380
+    },
+    4: {
+      type: 'local',
+      src: ['../videos/long/SubwaySurfurs-13min.mp4'],
+      durationSec: 813
+    },
   },
 
   // ── SART 参数（Robertson et al., 1997）──────────────────
