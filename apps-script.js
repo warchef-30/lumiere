@@ -31,6 +31,8 @@ const HEADERS = [
 function doPost(e) {
   try {
     const data  = JSON.parse(e.postData.contents);
+    const missing = ['participant_id', 'timestamp'].filter(f => data[f] === undefined);
+    if (missing.length > 0) throw new Error(`Missing required fields: ${missing.join(', ')}`);
     const ss    = SpreadsheetApp.getActiveSpreadsheet();
     let   sheet = ss.getSheetByName(SHEET_NAME);
 
