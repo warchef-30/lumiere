@@ -119,7 +119,7 @@ function submitData() {
     fetch(CONFIG.sheetsUrl, {
       method:  'POST',
       mode:    'no-cors',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain' },
       body:    JSON.stringify(payload),
     }).catch(e => console.warn('提交失败:', e));
   } else {
