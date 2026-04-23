@@ -11,7 +11,8 @@ const State = {
   startTime:     Date.now(),
   tabSwitched:   false,        // 是否中途切换过页面
   baseline:      {},           // 基线问卷数据
-  mood:          {},           // 情绪问卷数据（happy, sad, energetic）
+  mood:          {},           // 情绪问卷数据（happy, sad, energetic, tired）
+  phoneUse:      {},           // 手机使用自我报告（tempted, picked）
   demographics:  {},           // 基本信息问卷（社媒、游戏、age、gender、location、email）
   preSartTrials: [],           // Pre-SART 每题原始记录
   postSartTrials: [],          // Post-SART 每题原始记录
@@ -66,6 +67,9 @@ function submitData() {
     mood_happy:                  State.mood.happy,
     mood_sad:                    State.mood.sad,
     mood_energetic:              State.mood.energetic,
+    mood_tired:                  State.mood.tired,
+    phone_tempted:               State.phoneUse.tempted,
+    phone_picked:                State.phoneUse.picked,
 
     // Pre-SART
     pre_sart_commission_errors:  pre.commissionErrors,

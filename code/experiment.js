@@ -57,6 +57,18 @@ const TRANS = {
 
     // SART 测试
     sart_rule_short: '按空格 / 点击 = 非3 &nbsp;|&nbsp; 不按 = 3',
+    // 手机使用页
+    s_phone_h2: '最后两个问题',
+    s_phone_intro1: '在实验过程中，注意力分散是完全正常的人类反应——尤其是在完成长达 25 分钟的任务时。',
+    s_phone_intro2: '无论你的回答是什么，如实作答对我们的研究非常有帮助。感谢你的诚实！',
+    phone_tempted_label: '做实验期间，你有多想做分心的事（例如看手机）？',
+    scale_not_tempted: '从未想过',
+    scale_very_tempted: '非常频繁',
+    phone_picked_label: '实验期间，你有没有做过分心的事（例如拿起手机）？',
+    opt_yes: '有',
+    opt_no: '没有',
+    alert_phone: '请回答全部问题后提交。',
+
     phase_practice: '练习',
     phase_pre: 'Pre-SART · 正式测试',
     phase_post: 'Post-SART · 正式测试',
@@ -92,6 +104,15 @@ const TRANS = {
     scale_very_sad: '非常悲伤',
     scale_not_energetic: '完全没有',
     scale_very_energetic: '非常兴奋',
+    mood_tired_label: '你现在有多疲惫/困倦（tired）？',
+    scale_not_tired: '完全不疲惫',
+    scale_very_tired: '非常疲惫',
+    phone_tempted_label: '做实验期间，你有多想做分心的事（例如看手机）？',
+    scale_not_tempted: '完全没有',
+    scale_very_tempted: '非常想',
+    phone_picked_label: '实验期间，你有没有做过分心的事（例如拿起手机）？',
+    opt_yes: '有',
+    opt_no: '没有',
 
     // Post-SART 过渡
     s_trans_h2: '第二轮注意力测试',
@@ -250,6 +271,27 @@ const TRANS = {
     scale_very_sad: 'Very sad',
     scale_not_energetic: 'Not at all',
     scale_very_energetic: 'Very energetic',
+    mood_tired_label: 'How tired or drained do you feel right now?',
+    scale_not_tired: 'Not at all',
+    scale_very_tired: 'Very tired',
+    phone_tempted_label: 'How often did you feel tempted to do something distracting (e.g., check your phone) during the study?',
+    scale_not_tempted: 'Not at all',
+    scale_very_tempted: 'Very tempted',
+    phone_picked_label: 'Did you do anything distracting (e.g., pick up your phone) during the study?',
+    opt_yes: 'Yes',
+    opt_no: 'No',
+
+    // Phone screen
+    s_phone_h2: 'Two Last Questions',
+    s_phone_intro1: 'It\'s completely normal for attention to wander during a long task like this — especially one lasting 25+ minutes.',
+    s_phone_intro2: 'Whatever your answer is, <strong>your honest response is extremely valuable to our research</strong>. Thank you for your honesty!',
+    phone_tempted_label: 'How often did you feel tempted to do something distracting (e.g., check your phone) during the study?',
+    scale_not_tempted: 'Not at all',
+    scale_very_tempted: 'Very frequently',
+    phone_picked_label: 'Did you do anything distracting (e.g., pick up your phone) during the study?',
+    opt_yes: 'Yes',
+    opt_no: 'No',
+    alert_phone: 'Please answer all questions before submitting.',
 
     s_trans_h2: 'Second Attention Test',
     s_trans_p1: 'Next is the second attention test — <strong>225 trials</strong>, same rules as before.',
@@ -392,7 +434,8 @@ if (CONFIG.debug) {
     { id: 's-mood',            zh: '10 情绪问卷',     en: '10 Mood' },
     { id: 's-sart-transition', zh: '11 →Post-SART',  en: '11 → Post' },
     { id: 's-demographics',    zh: '12 基本信息',     en: '12 Demographics' },
-    { id: 's-complete',        zh: '13 完成',        en: '13 Complete' },
+    { id: 's-phone',           zh: '13 手机使用',     en: '13 Phone' },
+    { id: 's-complete',        zh: '14 完成',        en: '14 Complete' },
   ];
 
   const nav = document.createElement('div');
@@ -801,8 +844,7 @@ document.getElementById('btn-video-start').addEventListener('click', () => {
   const groupCfg = CONFIG.videos[State.group];
   _startVideo(groupCfg);
 
-  document.getElementById('video-group-tag').textContent =
-    LANG.current === 'zh' ? `组${State.group}` : `Group ${State.group}`;
+  // 组别标签已移除（Lila 4/21 反馈：不向参与者展示分组信息）
 
   document.getElementById('btn-video-skip').style.display =
     CONFIG.debug ? 'block' : 'none';
@@ -837,13 +879,14 @@ document.getElementById('btn-mood-submit').addEventListener('click', () => {
   const happy     = document.querySelector('input[name="mood-happy"]:checked')?.value;
   const sad       = document.querySelector('input[name="mood-sad"]:checked')?.value;
   const energetic = document.querySelector('input[name="mood-energetic"]:checked')?.value;
+  const tired     = document.querySelector('input[name="mood-tired"]:checked')?.value;
 
-  if (!happy || !sad || !energetic) {
+  if (!happy || !sad || !energetic || !tired) {
     alert(T('alert_mood'));
     return;
   }
 
-  State.mood = { happy: +happy, sad: +sad, energetic: +energetic };
+  State.mood = { happy: +happy, sad: +sad, energetic: +energetic, tired: +tired };
   showScreen('s-sart-transition');
 });
 
@@ -874,6 +917,22 @@ document.getElementById('btn-demo-submit').addEventListener('click', () => {
     email:          email || null,
   };
 
+  showScreen('s-phone');
+});
+
+// ════════════════════════════════════════════════════════
+//  SCREEN 13: 手机使用提交 → 完成
+// ════════════════════════════════════════════════════════
+document.getElementById('btn-phone-submit').addEventListener('click', () => {
+  const tempted = document.querySelector('input[name="phone-tempted"]:checked')?.value;
+  const picked  = document.querySelector('input[name="phone-picked"]:checked')?.value;
+
+  if (!tempted || !picked) {
+    alert(T('alert_phone'));
+    return;
+  }
+
+  State.phoneUse = { tempted: +tempted, picked };
   showScreen('s-complete');
   submitData();
 });

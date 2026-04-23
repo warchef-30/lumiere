@@ -287,7 +287,6 @@
 
 <!-- ══ SCREEN 9 · 视频播放 ══════════════════════════ -->
 <div class="screen" id="s-video">
-  <span class="video-group-tag" id="video-group-tag"></span>
   <div id="videoBox">
     <iframe id="videoFrame" allowfullscreen
       allow="autoplay; encrypted-media"
@@ -301,7 +300,7 @@
   <button class="btn-ghost" id="btn-video-skip" data-i18n="btn_video_skip">⏭ 跳过（调试用）</button>
 </div>
 
-<!-- ══ SCREEN 10 · 情绪问卷（happy / sad / energetic）══ -->
+<!-- ══ SCREEN 10 · 情绪问卷（happy / sad / energetic / tired）+ 手机使用 ══ -->
 <div class="screen" id="s-mood">
   <h2 data-i18n="s_mood_h2">当前感受</h2>
   <p class="hint" style="margin-bottom:20px" data-i18n="s_mood_hint">根据你刚才观看完视频后的真实感受作答。</p>
@@ -340,6 +339,18 @@
       <label><input type="radio" name="mood-energetic" value="5"><span>5</span></label>
     </div>
     <div class="scale-ends"><span data-i18n="scale_not_energetic">完全没有</span><span data-i18n="scale_very_energetic">非常兴奋</span></div>
+  </div>
+
+  <div class="q-block">
+    <label data-i18n="mood_tired_label">你现在有多疲惫/困倦（tired）？</label>
+    <div class="scale-row">
+      <label><input type="radio" name="mood-tired" value="1"><span>1</span></label>
+      <label><input type="radio" name="mood-tired" value="2"><span>2</span></label>
+      <label><input type="radio" name="mood-tired" value="3"><span>3</span></label>
+      <label><input type="radio" name="mood-tired" value="4"><span>4</span></label>
+      <label><input type="radio" name="mood-tired" value="5"><span>5</span></label>
+    </div>
+    <div class="scale-ends"><span data-i18n="scale_not_tired">完全不疲惫</span><span data-i18n="scale_very_tired">非常疲惫</span></div>
   </div>
 
   <button class="btn" id="btn-mood-submit" data-i18n="btn_continue">继续</button>
@@ -427,7 +438,36 @@
   <button class="btn" id="btn-demo-submit" data-i18n="btn_submit">提交</button>
 </div>
 
-<!-- ══ SCREEN 13 · 完成 ══════════════════════════════ -->
+<!-- ══ SCREEN 13 · 手机使用自我报告 ════════════════════ -->
+<div class="screen" id="s-phone">
+  <h2 data-i18n="s_phone_h2">最后两个问题</h2>
+  <p class="hint" style="margin-bottom:8px" data-i18n="s_phone_intro1">在实验过程中，注意力分散是完全正常的人类反应——尤其是在完成长达 25 分钟的任务时。</p>
+  <p class="hint" style="margin-bottom:20px" data-i18n="s_phone_intro2">无论你的回答是什么，<strong>如实作答对我们的研究非常有帮助</strong>。感谢你的诚实！</p>
+
+  <div class="q-block">
+    <label data-i18n="phone_tempted_label">做实验期间，你有多少次想拿起手机玩？</label>
+    <div class="scale-row">
+      <label><input type="radio" name="phone-tempted" value="1"><span>1</span></label>
+      <label><input type="radio" name="phone-tempted" value="2"><span>2</span></label>
+      <label><input type="radio" name="phone-tempted" value="3"><span>3</span></label>
+      <label><input type="radio" name="phone-tempted" value="4"><span>4</span></label>
+      <label><input type="radio" name="phone-tempted" value="5"><span>5</span></label>
+    </div>
+    <div class="scale-ends"><span data-i18n="scale_not_tempted">从未想过</span><span data-i18n="scale_very_tempted">非常频繁</span></div>
+  </div>
+
+  <div class="q-block">
+    <label data-i18n="phone_picked_label">你在实验过程中有没有实际拿起手机玩了？</label>
+    <div class="yn-row">
+      <label class="yn-opt"><input type="radio" name="phone-picked" value="yes"><span data-i18n="opt_yes">有</span></label>
+      <label class="yn-opt"><input type="radio" name="phone-picked" value="no"><span data-i18n="opt_no">没有</span></label>
+    </div>
+  </div>
+
+  <button class="btn" id="btn-phone-submit" data-i18n="btn_submit">提交</button>
+</div>
+
+<!-- ══ SCREEN 14 · 完成 ══════════════════════════════ -->
 <div class="screen" id="s-complete">
   <div class="complete-icon">🎉</div>
   <h2 data-i18n="s_complete_h2">实验完成，谢谢你！</h2>
