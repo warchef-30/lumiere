@@ -141,6 +141,11 @@ const TRANS = {
     demog_email_hint: '此项为可选，不填不影响提交。',
     btn_submit: '提交',
 
+    // 手机使用页
+    s_phone_h2: '最后两个问题',
+    s_phone_intro1: '在这么长的任务中（25 分钟以上），注意力出现分散是完全正常的现象。',
+    s_phone_intro2: '无论你的答案是什么，<strong>你的诚实回答对我们的研究极其宝贵</strong>。感谢你的诚实！',
+
     // 完成页
     s_complete_h2: '实验完成，谢谢你！',
     s_complete_p: '你的数据已记录，对本研究非常有帮助。',
