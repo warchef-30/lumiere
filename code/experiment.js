@@ -32,10 +32,6 @@ const TRANS = {
     opt_light: '轻度活动（散步、站立等）',
     opt_exercise: '运动 / 体育活动',
     opt_other: '其他',
-    bl_energy_label: '你现在的精力水平如何？',
-    bl_stress_label: '你现在的压力水平如何？',
-    scale_low: '非常低',
-    scale_high: '非常高',
     btn_continue: '继续',
 
     // SART 说明（纯文字）
@@ -57,16 +53,6 @@ const TRANS = {
 
     // SART 测试
     sart_rule_short: '按空格 / 点击 = 非3 &nbsp;|&nbsp; 不按 = 3',
-    // 手机使用页
-    s_phone_h2: '最后两个问题',
-    s_phone_intro1: '在实验过程中，注意力分散是完全正常的人类反应——尤其是在完成长达 25 分钟的任务时。',
-    s_phone_intro2: '无论你的回答是什么，如实作答对我们的研究非常有帮助。感谢你的诚实！',
-    phone_tempted_label: '做实验期间，你有多想做分心的事（例如看手机）？',
-    scale_not_tempted: '从未想过',
-    scale_very_tempted: '非常频繁',
-    phone_picked_label: '实验期间，你有没有做过分心的事（例如拿起手机）？',
-    opt_yes: '有',
-    opt_no: '没有',
     alert_phone: '请回答全部问题后提交。',
 
     phase_practice: '练习',
@@ -107,6 +93,9 @@ const TRANS = {
     mood_tired_label: '你现在有多疲惫/困倦（tired）？',
     scale_not_tired: '完全不疲惫',
     scale_very_tired: '非常疲惫',
+    video_interest_label: '你觉得这段视频有多有趣？',
+    scale_not_interesting: '完全无聊',
+    scale_very_interesting: '非常有趣',
     phone_tempted_label: '做实验期间，你有多想做分心的事（例如看手机）？',
     scale_not_tempted: '完全没有',
     scale_very_tempted: '非常想',
@@ -217,10 +206,6 @@ const TRANS = {
     opt_light: 'Light activity (walking, standing, etc.)',
     opt_exercise: 'Exercise / Sports',
     opt_other: 'Other',
-    bl_energy_label: 'How is your energy level right now?',
-    bl_stress_label: 'How is your stress level right now?',
-    scale_low: 'Very low',
-    scale_high: 'Very high',
     btn_continue: 'Continue',
 
     s_intro_h2: 'Attention Task Instructions',
@@ -274,12 +259,9 @@ const TRANS = {
     mood_tired_label: 'How tired or drained do you feel right now?',
     scale_not_tired: 'Not at all',
     scale_very_tired: 'Very tired',
-    phone_tempted_label: 'How often did you feel tempted to do something distracting (e.g., check your phone) during the study?',
-    scale_not_tempted: 'Not at all',
-    scale_very_tempted: 'Very tempted',
-    phone_picked_label: 'Did you do anything distracting (e.g., pick up your phone) during the study?',
-    opt_yes: 'Yes',
-    opt_no: 'No',
+    video_interest_label: 'How interesting did you find the video?',
+    scale_not_interesting: 'Not at all interesting',
+    scale_very_interesting: 'Very interesting',
 
     // Phone screen
     s_phone_h2: 'Two Last Questions',
@@ -597,6 +579,7 @@ _consentCheckbox.addEventListener('change', () => {
 });
 
 _btnConsent.addEventListener('click', () => {
+  commitProgress('consent');
   showScreen('s-welcome');
 });
 
@@ -604,6 +587,7 @@ _btnConsent.addEventListener('click', () => {
 //  SCREEN 1 → 2: 欢迎 → 倒计时
 // ════════════════════════════════════════════════════════
 document.getElementById('btn-start').addEventListener('click', () => {
+  commitProgress('welcome');
   showScreen('s-countdown');
   let t = 10;
   document.getElementById('countdownNumber').textContent = t;
@@ -618,17 +602,27 @@ document.getElementById('btn-start').addEventListener('click', () => {
 //  SCREEN 3: 基线问卷提交 → SART 说明（纯文字）
 // ════════════════════════════════════════════════════════
 document.getElementById('btn-baseline-submit').addEventListener('click', () => {
-  const sleep    = document.getElementById('bl-sleep').value;
-  const activity = document.getElementById('bl-activity').value;
-  const energy   = document.querySelector('input[name="bl-energy"]:checked')?.value;
-  const stress   = document.querySelector('input[name="bl-stress"]:checked')?.value;
+  const sleep           = document.getElementById('bl-sleep').value;
+  const activity        = document.getElementById('bl-activity').value;
+  const blMoodHappy     = document.querySelector('input[name="bl-mood-happy"]:checked')?.value;
+  const blMoodSad       = document.querySelector('input[name="bl-mood-sad"]:checked')?.value;
+  const blMoodEnergetic = document.querySelector('input[name="bl-mood-energetic"]:checked')?.value;
+  const blMoodTired     = document.querySelector('input[name="bl-mood-tired"]:checked')?.value;
 
-  if (!sleep || !activity || !energy || !stress) {
+  if (!sleep || !activity || !blMoodHappy || !blMoodSad || !blMoodEnergetic || !blMoodTired) {
     alert(T('alert_baseline'));
     return;
   }
 
-  State.baseline = { sleep: +sleep, activity, energy: +energy, stress: +stress };
+  State.baseline = {
+    sleep:             +sleep,
+    activity,
+    bl_mood_happy:     +blMoodHappy,
+    bl_mood_sad:       +blMoodSad,
+    bl_mood_energetic: +blMoodEnergetic,
+    bl_mood_tired:     +blMoodTired,
+  };
+  commitProgress('baseline');
   showScreen('s-sart-intro');
 });
 
@@ -636,6 +630,7 @@ document.getElementById('btn-baseline-submit').addEventListener('click', () => {
 //  SCREEN 4 → 5: SART 说明（文字）→ 演示+练习
 // ════════════════════════════════════════════════════════
 document.getElementById('btn-sart-next').addEventListener('click', () => {
+  commitProgress('sart_intro');
   showScreen('s-sart-demo');
   _startDemo();
 });
@@ -707,6 +702,7 @@ function _startDemo() {
 // ════════════════════════════════════════════════════════
 document.getElementById('btn-sart-practice').addEventListener('click', () => {
   if (_demoTimer) { clearTimeout(_demoTimer); _demoTimer = null; }
+  commitProgress('sart_demo');
   _sart.trials = generateSartTrials(CONFIG.sart.practiceTrials);
   _sart.index  = 0;
   _sart.phase  = 'practice';
@@ -716,6 +712,7 @@ document.getElementById('btn-sart-practice').addEventListener('click', () => {
 
 // SCREEN 7 → 6: 练习完成 → Pre-SART
 document.getElementById('btn-pre-sart').addEventListener('click', () => {
+  commitProgress('pre_sart_start');
   _sart.trials = generateSartTrials(CONFIG.sart.mainTrials);
   _sart.index  = 0;
   _sart.phase  = 'pre';
@@ -725,6 +722,7 @@ document.getElementById('btn-pre-sart').addEventListener('click', () => {
 
 // SCREEN 11 → 6: Post-SART 过渡 → Post-SART
 document.getElementById('btn-post-sart').addEventListener('click', () => {
+  commitProgress('post_sart_start');
   _sart.trials = generateSartTrials(CONFIG.sart.mainTrials);
   _sart.index  = 0;
   _sart.phase  = 'post';
@@ -738,15 +736,18 @@ document.getElementById('btn-post-sart').addEventListener('click', () => {
 function _runSartTrial() {
   if (_sart.index >= _sart.trials.length) {
     if (_sart.phase === 'practice') {
+      commitProgress('practice_done');
       showScreen('s-sart-break-pre');
     } else if (_sart.phase === 'pre') {
       // Pre-SART 完成 → 进入视频
+      commitProgress('pre_sart');
       const groupCfg = CONFIG.videos[State.group];
       document.getElementById('video-group-hint').textContent =
         T('video_duration_hint').replace('{m}', groupCfg.durationSec / 60);
       showScreen('s-video-intro');
     } else {
       // Post-SART 完成 → 基本信息问卷
+      commitProgress('post_sart');
       showScreen('s-demographics');
     }
     return;
@@ -839,6 +840,7 @@ document.getElementById('sartStimulus').addEventListener('click', _handleRespons
 //  SCREEN 8 → 9: 视频说明 → 视频播放
 // ════════════════════════════════════════════════════════
 document.getElementById('btn-video-start').addEventListener('click', () => {
+  commitProgress('video_start');
   showScreen('s-video');
 
   const groupCfg = CONFIG.videos[State.group];
@@ -869,6 +871,7 @@ document.getElementById('btn-video-skip').addEventListener('click', () => {
 
 function _afterVideo() {
   _stopVideo();
+  commitProgress('video_done');
   showScreen('s-mood');
 }
 
@@ -876,17 +879,25 @@ function _afterVideo() {
 //  SCREEN 10: 情绪问卷提交 → Post-SART 过渡
 // ════════════════════════════════════════════════════════
 document.getElementById('btn-mood-submit').addEventListener('click', () => {
-  const happy     = document.querySelector('input[name="mood-happy"]:checked')?.value;
-  const sad       = document.querySelector('input[name="mood-sad"]:checked')?.value;
-  const energetic = document.querySelector('input[name="mood-energetic"]:checked')?.value;
-  const tired     = document.querySelector('input[name="mood-tired"]:checked')?.value;
+  const videoInterest = document.querySelector('input[name="video-interest"]:checked')?.value;
+  const happy         = document.querySelector('input[name="mood-happy"]:checked')?.value;
+  const sad           = document.querySelector('input[name="mood-sad"]:checked')?.value;
+  const energetic     = document.querySelector('input[name="mood-energetic"]:checked')?.value;
+  const tired         = document.querySelector('input[name="mood-tired"]:checked')?.value;
 
-  if (!happy || !sad || !energetic || !tired) {
+  if (!videoInterest || !happy || !sad || !energetic || !tired) {
     alert(T('alert_mood'));
     return;
   }
 
-  State.mood = { happy: +happy, sad: +sad, energetic: +energetic, tired: +tired };
+  State.mood = {
+    videoInterest: +videoInterest,
+    happy:         +happy,
+    sad:           +sad,
+    energetic:     +energetic,
+    tired:         +tired,
+  };
+  commitProgress('mood');
   showScreen('s-sart-transition');
 });
 
@@ -916,7 +927,7 @@ document.getElementById('btn-demo-submit').addEventListener('click', () => {
     location,
     email:          email || null,
   };
-
+  commitProgress('demographics');
   showScreen('s-phone');
 });
 
@@ -933,6 +944,7 @@ document.getElementById('btn-phone-submit').addEventListener('click', () => {
   }
 
   State.phoneUse = { tempted: +tempted, picked };
+  commitProgress('phone');
   showScreen('s-complete');
   submitData();
 });

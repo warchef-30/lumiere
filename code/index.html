@@ -112,27 +112,51 @@
   </div>
 
   <div class="q-block">
-    <label data-i18n="bl_energy_label">你现在的精力水平如何？</label>
+    <label data-i18n="mood_happy_label">你现在有多幸福（happy）？</label>
     <div class="scale-row">
-      <label><input type="radio" name="bl-energy" value="1"><span>1</span></label>
-      <label><input type="radio" name="bl-energy" value="2"><span>2</span></label>
-      <label><input type="radio" name="bl-energy" value="3"><span>3</span></label>
-      <label><input type="radio" name="bl-energy" value="4"><span>4</span></label>
-      <label><input type="radio" name="bl-energy" value="5"><span>5</span></label>
+      <label><input type="radio" name="bl-mood-happy" value="1"><span>1</span></label>
+      <label><input type="radio" name="bl-mood-happy" value="2"><span>2</span></label>
+      <label><input type="radio" name="bl-mood-happy" value="3"><span>3</span></label>
+      <label><input type="radio" name="bl-mood-happy" value="4"><span>4</span></label>
+      <label><input type="radio" name="bl-mood-happy" value="5"><span>5</span></label>
     </div>
-    <div class="scale-ends"><span data-i18n="scale_low">非常低</span><span data-i18n="scale_high">非常高</span></div>
+    <div class="scale-ends"><span data-i18n="scale_not_happy">完全不幸福</span><span data-i18n="scale_very_happy">非常幸福</span></div>
   </div>
 
   <div class="q-block">
-    <label data-i18n="bl_stress_label">你现在的压力水平如何？</label>
+    <label data-i18n="mood_sad_label">你现在有多悲伤（sad）？</label>
     <div class="scale-row">
-      <label><input type="radio" name="bl-stress" value="1"><span>1</span></label>
-      <label><input type="radio" name="bl-stress" value="2"><span>2</span></label>
-      <label><input type="radio" name="bl-stress" value="3"><span>3</span></label>
-      <label><input type="radio" name="bl-stress" value="4"><span>4</span></label>
-      <label><input type="radio" name="bl-stress" value="5"><span>5</span></label>
+      <label><input type="radio" name="bl-mood-sad" value="1"><span>1</span></label>
+      <label><input type="radio" name="bl-mood-sad" value="2"><span>2</span></label>
+      <label><input type="radio" name="bl-mood-sad" value="3"><span>3</span></label>
+      <label><input type="radio" name="bl-mood-sad" value="4"><span>4</span></label>
+      <label><input type="radio" name="bl-mood-sad" value="5"><span>5</span></label>
     </div>
-    <div class="scale-ends"><span data-i18n="scale_low">非常低</span><span data-i18n="scale_high">非常高</span></div>
+    <div class="scale-ends"><span data-i18n="scale_not_sad">完全不悲伤</span><span data-i18n="scale_very_sad">非常悲伤</span></div>
+  </div>
+
+  <div class="q-block">
+    <label data-i18n="mood_energetic_label">你现在有多兴奋/精力充沛（energetic）？</label>
+    <div class="scale-row">
+      <label><input type="radio" name="bl-mood-energetic" value="1"><span>1</span></label>
+      <label><input type="radio" name="bl-mood-energetic" value="2"><span>2</span></label>
+      <label><input type="radio" name="bl-mood-energetic" value="3"><span>3</span></label>
+      <label><input type="radio" name="bl-mood-energetic" value="4"><span>4</span></label>
+      <label><input type="radio" name="bl-mood-energetic" value="5"><span>5</span></label>
+    </div>
+    <div class="scale-ends"><span data-i18n="scale_not_energetic">完全没有</span><span data-i18n="scale_very_energetic">非常兴奋</span></div>
+  </div>
+
+  <div class="q-block">
+    <label data-i18n="mood_tired_label">你现在有多疲惫/困倦（tired）？</label>
+    <div class="scale-row">
+      <label><input type="radio" name="bl-mood-tired" value="1"><span>1</span></label>
+      <label><input type="radio" name="bl-mood-tired" value="2"><span>2</span></label>
+      <label><input type="radio" name="bl-mood-tired" value="3"><span>3</span></label>
+      <label><input type="radio" name="bl-mood-tired" value="4"><span>4</span></label>
+      <label><input type="radio" name="bl-mood-tired" value="5"><span>5</span></label>
+    </div>
+    <div class="scale-ends"><span data-i18n="scale_not_tired">完全不疲惫</span><span data-i18n="scale_very_tired">非常疲惫</span></div>
   </div>
 
   <button class="btn" id="btn-baseline-submit" data-i18n="btn_continue">继续</button>
@@ -304,6 +328,18 @@
 <div class="screen" id="s-mood">
   <h2 data-i18n="s_mood_h2">当前感受</h2>
   <p class="hint" style="margin-bottom:20px" data-i18n="s_mood_hint">根据你刚才观看完视频后的真实感受作答。</p>
+
+  <div class="q-block">
+    <label data-i18n="video_interest_label">你觉得这段视频有多有趣？</label>
+    <div class="scale-row">
+      <label><input type="radio" name="video-interest" value="1"><span>1</span></label>
+      <label><input type="radio" name="video-interest" value="2"><span>2</span></label>
+      <label><input type="radio" name="video-interest" value="3"><span>3</span></label>
+      <label><input type="radio" name="video-interest" value="4"><span>4</span></label>
+      <label><input type="radio" name="video-interest" value="5"><span>5</span></label>
+    </div>
+    <div class="scale-ends"><span data-i18n="scale_not_interesting">完全无聊</span><span data-i18n="scale_very_interesting">非常有趣</span></div>
+  </div>
 
   <div class="q-block">
     <label data-i18n="mood_happy_label">你现在有多幸福（happy）？</label>
