@@ -43,7 +43,7 @@ const TRANS = {
 
     // SART 演示
     s_demo_h2: '演示与练习',
-    s_demo_p: '观看下方演示，了解任务节奏：',
+    s_demo_p: '观看下方演示，了解任务节奏；准备好后，请按下方绿色按钮开始练习。',
     demo_label: '演示',
     demo_press: '✓ 按下空格',
     demo_no: '✗ 不按（是 3！）',
@@ -220,7 +220,7 @@ const TRANS = {
     sart_rule_html: '👉 When you see <strong>1, 2, 4, 5, 6, 7, 8, or 9</strong>, <strong>press the Space bar</strong> (or tap the screen)<br>🚫 When you see <strong style="color:#dc2626;font-size:1.2rem">3</strong>, do <strong>NOT press</strong> anything',
 
     s_demo_h2: 'Demo & Practice',
-    s_demo_p: 'Watch the demo below to get a feel for the task:',
+    s_demo_p: 'Watch the demo below to get a feel for the task, and press the green button whenever you understand the task and are ready to begin.',
     demo_label: 'DEMO',
     demo_press: '✓ Press Space',
     demo_no: "✗ Don't press — it's 3!",
