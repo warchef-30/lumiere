@@ -1,0 +1,2 @@
+{"type":"click","text":"A\n      \n        本地 MP4 文件（已下载的 3 个视频）\n        用 <video> 标签直接播放 FermiParadox / NukeACity / AllNukesAtOnce，不依赖 YouTube。\n        ✅ 离线可用，无广告干扰⚠️ 文件需要托管（GitHub Pages 有 100MB 限制）","choice":"long-a","id":null,"timestamp":1776173455012}
+{"type":"click","text":"B\n      \n        内嵌预下载短视频合集\n        把已下载的 Zach King / Khaby Lame 等短视频循环播放，全程在实验页内。\n        ✅ 完全可控⚠️ 不是真实刷 feed 体验，内容固定，需准备更多素材","choice":"short-b","id":null,"timestamp":1776173457944}

@@ -1,0 +1,473 @@
+WEBVTT
+
+00:00.000 --> 00:06.860
+Today we are going to see who is better. ChatGPT 5.2, Gemini 3 Pro, or Claude 4.5.
+
+00:07.060 --> 00:10.880
+By making all three of them recreate subway surfers in 30 minutes.
+
+00:11.220 --> 00:13.720
+We will start off with ChatGPT.
+
+00:16.180 --> 00:21.220
+What's up guys? Here we are on ChatGPT 5.2. And I'm gonna put it on thinking mode so that way it
+
+00:21.220 --> 00:26.660
+thinks longer for better answers. So let's go and paste in our prompt here. Okay, here is our prompt
+
+00:26.660 --> 00:30.840
+and I made it super, super detailed. So hopefully it can give us a good base game. I also attached
+
+00:30.840 --> 00:36.600
+some images here to help it as well. Let's go and hit send and see what ChatGPT can cook up for us.
+
+00:36.760 --> 00:41.280
+And we're also gonna start a 30 minute timer here as well. And looks like ChatGPT is already starting
+
+00:41.280 --> 00:44.740
+to write the code. So hopefully it can give us a good base game and then we're gonna have it add
+
+00:44.740 --> 00:49.880
+on later. All right guys, ChatGPT gave us the code back in about nine minutes. So let's go and copy
+
+00:49.880 --> 00:55.440
+the code here and then paste it in. And it looks like we have over 1,500 lines of code. So that's
+
+00:55.440 --> 01:00.000
+honestly pretty crazy. Oh wow, this actually looks pretty good. Guys, we're on Subway Runner,
+
+01:00.140 --> 01:07.260
+not Subway Surfers. But let's go and click play and see what happens. Oh wow. Okay, this isn't bad.
+
+01:07.660 --> 01:11.720
+So you can collect coins and you see them in the top corner. And it looks like it randomly generates
+
+01:11.720 --> 01:18.060
+the map as well. I can jump and I can like crouch down. Like the coin animations honestly look pretty
+
+01:18.060 --> 01:23.300
+good. We have like something we have to duck underneath it looks like. Oh my goodness, I just got hit.
+
+01:23.300 --> 01:28.100
+Okay, for a first version, that's honestly not too bad. But let's go and ask ChatGPT to add like
+
+01:28.100 --> 01:36.180
+trains and stuff. Okay, I'm asking it to add some trains like the actual game has. So hopefully
+
+01:36.180 --> 01:41.800
+ChatGPT can cook up something crazy here. All right guys, ChatGPT just gave us the code back. And it
+
+01:41.800 --> 01:46.500
+looks like we have about 16 minutes left. And in total, we have almost 2,000 lines of code. So
+
+01:46.500 --> 01:52.000
+let's go and run this and see what happens. Oh wow. Okay, it looks like you can duck under obstacles
+
+01:52.000 --> 01:56.240
+now. And we have like trains here and stuff. Yo, this actually looks pretty good. You know
+
+01:56.240 --> 02:00.340
+what? Honestly, this game isn't that bad. So I'm gonna send it back to ChatGPT. See if
+
+02:00.340 --> 02:04.540
+we can add a few things. Okay, why is there so many ducking things, bro? What is this game
+
+02:04.540 --> 02:06.880
+like limbo or something? Oh my goodness.
+
+02:12.000 --> 02:16.980
+A few moments later. All right, hopefully we should have a nice background now. So let's go
+
+02:16.980 --> 02:21.800
+and copy this code and see what happens. Okay, that looks actually pretty cool. But let's see
+
+02:21.800 --> 02:27.140
+if ChatGPT can like make that more to the sides to make it feel more like 3D. All right, ChatGPT
+
+02:27.140 --> 02:32.700
+just finished up. And look at the background here. Honestly, it looks pretty solid. Now we have about
+
+02:32.700 --> 02:36.680
+six minutes left. So I'm gonna see if we can add a few power ups and stuff. But for a game created in
+
+02:36.680 --> 02:43.640
+like 20-ish minutes, this is pretty solid. And ChatGPT's already done pretty good so far. So I'm
+
+02:43.640 --> 02:47.280
+really excited to see what Claude and Gemini can do because I think they're a lot more powerful
+
+02:47.280 --> 02:54.400
+than ChatGPT. Oh my goodness. ChatGPT just crashed. ChatGPT, you might want to be careful
+
+02:54.400 --> 03:01.020
+the next time you're out in public. Let's just say that. Okay, our timer just hit zero. So once
+
+03:01.020 --> 03:05.280
+ChatGPT gives me the code back, we're gonna do a final playthrough of the game and rate it out of 10.
+
+03:05.620 --> 03:11.800
+Bro, ChatGPT just crashed again. ChatGPT is falling off harder than Luke Skywalker in The Lost Jedi.
+
+03:11.800 --> 03:13.800
+One hour later.
+
+03:14.160 --> 03:17.380
+Alright guys, looks like ChatGPT's done. So let's go and give it a final playthrough.
+
+03:17.700 --> 03:21.740
+Looks like we ended up at about 3,000 lines of code. So let's run this and see what happens.
+
+03:22.080 --> 03:27.820
+Okay, here's the final version. And honestly, I mean, the menu looks pretty good. And yeah,
+
+03:27.880 --> 03:32.600
+there's sound effects now. You hear that? And the power ups work. Like I have a magnet right now.
+
+03:33.700 --> 03:38.060
+And it's letting me collect all the coins. I mean, you can jump up and down. You can crouch.
+
+03:38.060 --> 03:42.200
+It keeps track of your score and tells you your best score in the corner as well. And it also
+
+03:42.200 --> 03:46.660
+keeps track of your coins. And it looks like it's getting faster over time as well. I mean,
+
+03:46.700 --> 03:50.840
+honestly, this game is pretty fun. Like jump over obstacles and stuff. They have different heights.
+
+03:52.320 --> 03:59.180
+Oh no. Okay, I still got a score of 30,000 though. Honestly, for a game created in like 30 minutes,
+
+03:59.280 --> 04:04.380
+I'm gonna give it a 7 out of 10. But I have high hopes for the next AI. So let's see what they can do.
+
+04:04.380 --> 04:10.840
+All right, guys, here we are on Gemini. And let's make sure we have it on pro mode here. So that
+
+04:10.840 --> 04:16.000
+way it thinks longer for advanced math and code. Let's go ahead and paste our prompt in here. So
+
+04:16.000 --> 04:20.600
+we have our prompt right here. I'm gonna go ahead and click send. And then let's start our 30 minute
+
+04:20.600 --> 04:26.320
+timer. Hopefully Gemini can cook up something pretty crazy here. All right, so Gemini just finished.
+
+04:26.780 --> 04:31.980
+And let's copy our code and paste it in here. And it looks like we only have 800 lines of code. Okay,
+
+04:31.980 --> 04:36.680
+subway runner 3d tap to play. Um,
+
+04:38.440 --> 04:42.560
+it actually isn't bad. Although it's not like you're running for it. It's more like the stuff is
+
+04:42.560 --> 04:47.500
+coming towards you. I mean, for a first version, honestly, this is actually pretty good. We have
+
+04:47.500 --> 04:52.880
+like trains and stuff as well. We have a score counter and a coin counter as well. I'm gonna send
+
+04:52.880 --> 04:58.380
+it back to Gemini though and see what it can cook up. Oh, and the death animation is pretty cool as
+
+04:58.380 --> 05:03.220
+well. Okay. So now that we have the base game in place, I'm gonna use Gemini code assist over here
+
+05:03.220 --> 05:07.160
+to help us finish the rest of it. And I'm just gonna put it on default. So that way you can pick
+
+05:07.160 --> 05:12.400
+which one it thinks is best for the specific task. I told it to improve the graphics a lot and move the
+
+05:12.400 --> 05:16.180
+screen down a bit. So let's see what it can do. And again, what I love about Gemini is it just
+
+05:16.180 --> 05:19.520
+automatically makes the changes to your code. So you don't have to do anything else.
+
+05:19.520 --> 05:24.820
+One eternity later. Okay. This looks really good, but it feels like the objects are coming
+
+05:24.820 --> 05:28.700
+towards me and not like I'm actually going towards the objects. If that makes sense.
+
+05:28.940 --> 05:31.840
+I'm gonna ask Gemini to change up a few things real quick and we'll see what it can do.
+
+05:32.220 --> 05:36.480
+Gemini is done and we still have about 19 minutes left. So let's go and run this and see what happens.
+
+05:36.680 --> 05:39.880
+Oh my goodness. There's actually like a police officer behind me now. Hey, wait,
+
+05:39.880 --> 05:44.160
+this actually looks amazing. What? Wow. Okay. We still have so much time left. I want to see what
+
+05:44.160 --> 05:49.720
+else Gemini can cook up. Ask it for a jetpack powerup plus sound effects.
+
+05:53.240 --> 05:58.340
+Okay. We have like, Oh, look at this jumping animation. We have like sound effects too.
+
+05:58.640 --> 06:03.380
+And for crouching. That's actually pretty nice. Apparently there's a jetpack powerup somewhere
+
+06:03.380 --> 06:09.280
+in here. So let's see if I can find that. Is that it right there? Oh my goodness. I'm like flying.
+
+06:09.280 --> 06:15.180
+Oh, and it spawns coins up in the sky. Yo, that is insane. So I'm going to see if we can add sound
+
+06:15.180 --> 06:18.420
+effects for the coins and stuff and maybe a few more powerups. Let's see what we can get in.
+
+06:18.680 --> 06:22.280
+All right, guys. Apparently we got some new powerups as well. So let's see if we can find them.
+
+06:22.800 --> 06:26.780
+Also just look at these like animations and stuff. Oh, here's a new powerup, the magnet right here.
+
+06:27.940 --> 06:32.780
+Look at magnets, all the coins towards you. Oh wait, I got super boots. Look,
+
+06:32.820 --> 06:39.220
+I can jump way higher now. Oh my goodness. I'm LeBron James. And when you die now,
+
+06:39.220 --> 06:43.240
+it shows you your best score. Okay. This is actually pretty cool. We have about seven minutes
+
+06:43.240 --> 06:47.100
+left. So let's see what else we can add. I'm asking it for a character selection menu. So
+
+06:47.100 --> 06:52.020
+that should be pretty cool. Guys, here we are in, wow, we have a shop button and a play button.
+
+06:52.020 --> 06:56.260
+Plus we can change our character color. I'm going to go and put us on green. In the shop,
+
+06:56.320 --> 07:00.940
+you can buy jetpacks and powerups for different coin amounts. It's like you can level up your powerups
+
+07:00.940 --> 07:05.860
+here and then you can buy a headstart for 2000 coins. All right, guys, we have about a minute left.
+
+07:05.860 --> 07:10.140
+So I'm going to go and stop here, see if we can add a few last minute changes before we play the
+
+07:10.140 --> 07:14.360
+final version. All right, for our last prompt, I wanted to add some background music and also give
+
+07:14.360 --> 07:19.900
+us 5,000 points to test out the headstart feature and maybe do even more realistic graphics. So see
+
+07:19.900 --> 07:24.620
+if Gemini can do that. All right, guys, looks like Gemini just finished writing all the code and we
+
+07:24.620 --> 07:30.560
+ended at about 1,700 lines of code. So honestly, that's not too bad. Okay, here's our final version.
+
+07:30.820 --> 07:34.520
+I have a bit of an animation hovering over these buttons here. Let's go and select purple for our
+
+07:34.520 --> 07:39.240
+player color. Before we play, let's go and go to the shop. I just gave us 3,000 coins for fun. So
+
+07:39.240 --> 07:44.500
+we can test out some of this stuff. So I'm going to buy a headstart for 2,000 coins and then I'm
+
+07:44.500 --> 07:50.460
+going to increase our jetpack duration by one and increase our magnet duration as well. So let's go
+
+07:50.460 --> 07:54.880
+and give us a final playthrough. Oh my goodness. You hear that background music I added and let's use
+
+07:54.880 --> 08:00.660
+our headstart. Oh my goodness. This headstart is insane. Wow. This headstart is actually crazy.
+
+08:00.660 --> 08:06.180
+This background music is such a vibe. Here's a magnet power. Oh, a mystery power up. Oh my
+
+08:06.180 --> 08:10.980
+goodness. That just gave us 1,500 coins. I also changed the textures to make it more like a neon
+
+08:10.980 --> 08:16.340
+city. Another mystery box. Oh, I got a free headstart. Let's go. I mean, just look at these
+
+08:16.340 --> 08:22.440
+animations and stuff. Plus this background song is actually so good. What? This is definitely a
+
+08:22.440 --> 08:26.820
+better game than what ChadGPT made. I think overall, I'm going to have to give this game a 9 out of 10
+
+08:26.820 --> 08:30.960
+considering it was made in about 30 minutes. If you guys want to see me make a video where I test
+
+08:30.960 --> 08:35.020
+out an AI for like five plus hours, please let me know in the comments down below. And if these
+
+08:35.020 --> 08:41.820
+videos continue to do well, I'll definitely have to do that pretty soon. No, I died. Let's hop
+
+08:41.820 --> 08:48.620
+straight into Claude, I guess. All right, guys, here we are on Claude AI. And if you guys don't know,
+
+08:48.640 --> 08:53.000
+this is probably the best out of the three AIs for making video games. So let's see what it can cook up.
+
+08:53.000 --> 08:57.940
+I'm going to make sure it's on Opus 4.5 mode because it's most capable for complex work.
+
+08:58.320 --> 09:02.460
+Here's our prompt and I'm going to go and click send and we'll see what Claude can do. Claude is
+
+09:02.460 --> 09:08.560
+honestly like the final boss of AIs. Like just look at it code right there. Oh my gosh. While Claude
+
+09:08.560 --> 09:12.000
+is coding, if you guys have any other video ideas, please let me know in the comments down below and
+
+09:12.000 --> 09:16.200
+I'll try to get to every single one of them if I have enough time. Okay, looks like Claude gave us the
+
+09:16.200 --> 09:21.060
+first version. So let's check it out. Oh, wow. Okay. For some reason, the track's floating,
+
+09:21.060 --> 09:25.340
+but we'll worry about that later. Okay. The coins actually have like arcs for jumps. That's
+
+09:25.340 --> 09:31.020
+actually insane. Wow. So that's some pretty nice base obstacles. I think the textures on everything
+
+09:31.020 --> 09:35.320
+just already look better than the other AIs. And we have a crouch animation here as well.
+
+09:35.900 --> 09:40.140
+Of course, it collects our coins and shows us our score in the top right corner. Looks like we have
+
+09:40.140 --> 09:44.800
+to crouch underneath these things. Oh, wow. Oh my goodness. Okay. For first version, it's not bad.
+
+09:44.880 --> 09:47.980
+Let's see if we can get it to add some things though. All right, guys. So we hopped over to Claude
+
+09:47.980 --> 09:51.420
+code so that way you can edit this quicker. And we're just going to give it a prompt real quick
+
+09:51.420 --> 09:54.980
+over here. All right. Here's our prompt here. And I told it to add a bunch of different stuff. So
+
+09:54.980 --> 10:00.340
+let's see what it can do. It says it's going to add well over 900 new lines of code. And we're at
+
+10:00.340 --> 10:05.320
+about 1,800 right now. And while Claude is coding this, guys, please smack the like button down below
+
+10:05.320 --> 10:09.960
+the video. It only takes you like one second. And it really helps me out to continue pushing out
+
+10:09.960 --> 10:14.480
+these videos as soon as possible. All right, guys. Claude just finished that. And we still have
+
+10:14.480 --> 10:19.760
+about 20 minutes left. Apparently we have a sound system, character customizer. You can be like an
+
+10:19.760 --> 10:26.360
+alien, a robot, a ninja, power up system, a store system. And with it adding that much, I really
+
+10:26.360 --> 10:30.180
+think this is going to crash or something, but let's see. Okay. Let's click on the store first.
+
+10:30.260 --> 10:34.900
+Oh, wow. Okay. So you can like buy power-ups here. Unfortunately, right now, guys, we're broke
+
+10:34.900 --> 10:43.860
+just like I am in real life. Moving on. It's like we have a power up over here.
+
+10:44.880 --> 10:50.980
+Oh, I got a magnet power. Okay. That sound is kind of annoying, but it actually works. Nice.
+
+10:52.200 --> 10:56.780
+Oh, I got a rocket ship power up. I'm flying now. And it shows you how long you have left at the
+
+10:56.780 --> 11:00.360
+bottom. That's actually really cool. Wow. All right. Let's see if we can tell it to add a few
+
+11:00.360 --> 11:09.740
+more features and see what it can do. Okay. I really wanted to improve the graphics here. So
+
+11:09.740 --> 11:14.080
+let's see if we can actually do that. The problem is in HTML, it's really hard to make a really good
+
+11:14.080 --> 11:19.660
+looking graphics, but in the future, I might try and use some other game engines. Okay. Claude just
+
+11:19.660 --> 11:24.320
+finished up and we have about five minutes left. Apparently has four different types of hoverboards.
+
+11:24.320 --> 11:30.340
+Oh my goodness. Mystery boxes. Hey, we're at about 4,000 lines of code. So let's see how this goes.
+
+11:31.360 --> 11:36.100
+Oh, I just got a daily reward. What? Okay. These graphics actually look pretty solid. I think
+
+11:36.100 --> 11:39.800
+they look the best out of any game so far. Look at these clouds and stuff by the cities.
+
+11:40.140 --> 11:45.500
+I have a hoverboard on right now. I think. All right. We're going to give Claude one more prompt
+
+11:45.500 --> 11:50.540
+and then see what the final play through looks like. A few moments later. All right, guys,
+
+11:50.540 --> 11:54.700
+here we are in the final version that Claude made. So let's go and test it out. And just from the
+
+11:54.700 --> 11:59.400
+menu, you can see the text is animated here and the play button is as well. We have our high score
+
+11:59.400 --> 12:04.060
+here as well and our total coin count. So let's go and hit play. Okay. This game looks
+
+12:04.060 --> 12:10.340
+pretty solid and look. Oh my goodness. I just got a hoverboard. Look at this. It has animations
+
+12:10.340 --> 12:15.800
+on it and everything. Wow. This hoverboard is actually crazy. What game is definitely the
+
+12:15.800 --> 12:20.560
+most challenging out of any of the other ones so far. There's a lot of obstacles you need to be
+
+12:20.560 --> 12:28.720
+looking out for. Oh my goodness. How am I still alive? I'm still alive. No. Okay. That was actually
+
+12:28.720 --> 12:34.560
+so fun. What? Even just the background animations look so clean as well. And it starts out slower and
+
+12:34.560 --> 12:40.180
+then slowly gets more fast. Okay. I know I joke about this every game, but if you actually spent some
+
+12:40.180 --> 12:44.760
+more time and improve the textures a bit, you could post this as a mobile game and then charge ad
+
+12:44.760 --> 12:49.500
+money and get so rich. Now, subway servers, if you're watching this video, that is totally a joke
+
+12:49.500 --> 12:56.220
+and please do not come to my house. FBI, open up! This game's actually crazy. What?
+
+13:00.300 --> 13:05.740
+No, I got a high score though. Okay. That was actually crazy fun and we did manage to get a high
+
+13:05.740 --> 13:10.380
+score. So that's pretty awesome as well. Overall, I have to give this game a 10 out of 10 for a game
+
+13:10.380 --> 13:15.680
+created in about 25 minutes. This is honestly crazy. If I had more time, maybe in the future,
+
+13:15.740 --> 13:20.260
+I'll make an even better version of this. And also that subway server's text reminds me of something.
+
+13:21.020 --> 13:22.580
+Wait, is that what I think it is?
+

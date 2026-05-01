@@ -9,7 +9,7 @@ const CONFIG = {
   // ── 调试开关 ──────────────────────────────────────────
   // true  = 显示视频跳过按钮（本地调试用）
   // false = 隐藏跳过按钮（正式上线用）
-  debug: false,
+  debug: true,
 
   // ── Google Sheets 提交地址 ────────────────────────────
   // 部署 apps-script.js 后，将生成的 Web App URL 填入此处
@@ -69,12 +69,20 @@ const CONFIG = {
     3: {
       type: 'local',
       src: ['../videos/long/FermiParadox-6min.mp4'],
-      durationSec: 380
+      durationSec: 380,
+      subtitles: {
+        en: '../videos/long/FermiParadox-6min.en.vtt',
+        zh: '../videos/long/FermiParadox-6min.zh.vtt'
+      }
     },
     4: {
       type: 'local',
       src: ['../videos/long/SubwaySurfurs-13min.mp4'],
-      durationSec: 813
+      durationSec: 813,
+      subtitles: {
+        en: '../videos/long/SubwaySurfurs-13min.en.vtt',
+        zh: '../videos/long/SubwaySurfurs-13min.zh.vtt'
+      }
     },
   },
 

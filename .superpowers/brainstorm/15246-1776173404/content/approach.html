@@ -1,0 +1,48 @@
+<h2>视频模块改造 — 选方案</h2>
+<p class="subtitle">当前实验有 4 组，Groups 1&2 = 短视频，Groups 3&4 = 长视频。两种视频类型需要不同的播放方式。</p>
+
+<div class="section">
+  <div class="label">短视频组（Groups 1 & 2）</div>
+  <div class="options">
+    <div class="option" data-choice="short-a" onclick="toggleSelect(this)">
+      <div class="letter">A</div>
+      <div class="content">
+        <h3>平台选择 + 新标签页</h3>
+        <p>实验页展示 TikTok / Bilibili / YouTube Shorts 按钮，用户选一个，<code>window.open()</code> 打开新标签，实验页后台倒计时。时间到弹出提醒，用户关掉标签回来继续。</p>
+        <p><strong>✅ 刷真实个人 feed，生态效度高</strong><br>⚠️ 无法强制用户一定在看视频</p>
+      </div>
+    </div>
+    <div class="option" data-choice="short-b" onclick="toggleSelect(this)">
+      <div class="letter">B</div>
+      <div class="content">
+        <h3>内嵌预下载短视频合集</h3>
+        <p>把已下载的 Zach King / Khaby Lame 等短视频循环播放，全程在实验页内。</p>
+        <p><strong>✅ 完全可控</strong><br>⚠️ 不是真实刷 feed 体验，内容固定，需准备更多素材</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="label">长视频组（Groups 3 & 4）</div>
+  <div class="options">
+    <div class="option" data-choice="long-a" onclick="toggleSelect(this)">
+      <div class="letter">A</div>
+      <div class="content">
+        <h3>本地 MP4 文件（已下载的 3 个视频）</h3>
+        <p>用 <code>&lt;video&gt;</code> 标签直接播放 FermiParadox / NukeACity / AllNukesAtOnce，不依赖 YouTube。</p>
+        <p><strong>✅ 离线可用，无广告干扰</strong><br>⚠️ 文件需要托管（GitHub Pages 有 100MB 限制）</p>
+      </div>
+    </div>
+    <div class="option" data-choice="long-b" onclick="toggleSelect(this)">
+      <div class="letter">B</div>
+      <div class="content">
+        <h3>继续用 YouTube Embed</h3>
+        <p>把视频上传到 YouTube（或找已有链接），沿用现有 <code>&lt;iframe&gt;</code> 方案。</p>
+        <p><strong>✅ 托管零成本，代码改动最小</strong><br>⚠️ 需要 YouTube 访问，在中国大陆参与者可能有问题</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top:24px">可以同时选短视频方案和长视频方案（各选一个）</p>

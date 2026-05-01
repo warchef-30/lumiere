@@ -525,6 +525,60 @@ const _sart = {
 let _videoTimer   = null;
 let _videoEndedAC = null;   // AbortController for the video 'ended' listener
 
+// ── 双语字幕 ──────────────────────────────────────────
+let _subtitleRAF = null;
+
+function _parseVTT(text) {
+  const cues = [];
+  const blocks = text.trim().split(/\n\n+/);
+  for (const block of blocks) {
+    const lines = block.split('\n');
+    const timeLine = lines.find(l => l.includes('-->'));
+    if (!timeLine) continue;
+    const [start, end] = timeLine.split('-->').map(s => {
+      const p = s.trim().split(':');
+      if (p.length === 2) return parseFloat(p[0]) * 60 + parseFloat(p[1]);
+      return parseFloat(p[0]) * 3600 + parseFloat(p[1]) * 60 + parseFloat(p[2]);
+    });
+    const text = lines.slice(lines.indexOf(timeLine) + 1).join('\n').trim();
+    if (text) cues.push({ start, end, text });
+  }
+  return cues;
+}
+
+async function _startBilingualSubtitles(player, subtitles) {
+  cancelAnimationFrame(_subtitleRAF);
+  let overlay = document.getElementById('subtitleOverlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'subtitleOverlay';
+    document.getElementById('videoBox').appendChild(overlay);
+  }
+  overlay.innerHTML = '';
+
+  if (!subtitles) return;
+
+  const [enRes, zhRes] = await Promise.all([
+    fetch(subtitles.en).then(r => r.text()),
+    fetch(subtitles.zh).then(r => r.text())
+  ]);
+  const enCues = _parseVTT(enRes);
+  const zhCues = _parseVTT(zhRes);
+
+  const getCue = (cues, t) => cues.find(c => t >= c.start && t <= c.end);
+
+  const tick = () => {
+    const t = player.currentTime;
+    const en = getCue(enCues, t);
+    const zh = getCue(zhCues, t);
+    overlay.innerHTML = (en || zh)
+      ? `${zh ? `<span class="sub-zh">${zh.text}</span>` : ''}${en ? `<span class="sub-en">${en.text}</span>` : ''}`
+      : '';
+    _subtitleRAF = requestAnimationFrame(tick);
+  };
+  tick();
+}
+
 // ── 视频播放器 ────────────────────────────────────────
 function _startVideo(groupCfg) {
   const frame  = document.getElementById('videoFrame');
@@ -550,6 +604,9 @@ function _startVideo(groupCfg) {
     player.addEventListener('ended', playNext, { signal: _videoEndedAC.signal });
     playNext();
 
+    // 双语字幕
+    _startBilingualSubtitles(player, groupCfg.subtitles || null);
+
   } else {
     // YouTube iframe 路径（Groups 1 & 2）
     player.style.display = 'none';
@@ -568,6 +625,9 @@ function _stopVideo() {
 
   // 停止 video 并移除 ended 监听器
   if (_videoEndedAC) { _videoEndedAC.abort(); _videoEndedAC = null; }
+  cancelAnimationFrame(_subtitleRAF);
+  const overlay = document.getElementById('subtitleOverlay');
+  if (overlay) overlay.innerHTML = '';
   player.pause();
   player.src = '';
   player.style.display = 'none';
@@ -748,7 +808,7 @@ function _runSartTrial() {
       commitProgress('pre_sart');
       const groupCfg = CONFIG.videos[State.group];
       document.getElementById('video-group-hint').textContent =
-        T('video_duration_hint').replace('{m}', groupCfg.durationSec / 60);
+        T('video_duration_hint').replace('{m}', Math.round(groupCfg.durationSec / 60));
       showScreen('s-video-intro');
     } else {
       // Post-SART 完成 → 基本信息问卷
@@ -872,6 +932,16 @@ document.getElementById('btn-video-start').addEventListener('click', () => {
 document.getElementById('btn-video-skip').addEventListener('click', () => {
   clearInterval(_videoTimer);
   _afterVideo();
+});
+
+document.getElementById('btn-fullscreen').addEventListener('click', () => {
+  if (document.fullscreenElement || document.webkitFullscreenElement) {
+    (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+  } else {
+    const el = document.getElementById('videoBox');
+    const req = el.requestFullscreen || el.webkitRequestFullscreen;
+    if (req) req.call(el).catch(err => console.error('fullscreen error:', err));
+  }
 });
 
 function _afterVideo() {
