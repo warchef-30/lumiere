@@ -142,6 +142,10 @@ p  { font-size: 0.95rem; line-height: 1.75; color: #444; margin-bottom: 12px; }
   font-weight: 600;
   margin-bottom: 10px;
 }
+#s-video {
+  max-width: 960px;
+  padding: 24px 24px;
+}
 #videoBox {
   width: 100%;
   background: #0f0f0f;
