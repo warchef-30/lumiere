@@ -183,7 +183,7 @@ const TRANS = {
     s0_conf: '所有数据匿名收集，不收集任何个人身份信息。',
     s0_voluntary: '参与本研究完全自愿。如果你不参与，不会有任何负面影响。参与后你可以随时停止，也可以选择不回答特定问题。',
     s0_contact_label: '如有疑问，请联系：',
-    s0_contact_name: '（Lila Davachi 教授）',
+    s0_contact_name: '（孟子禾）',
     s0_agree_text: '我已阅读并理解以上信息，自愿同意参与本研究。',
     btn_consent: '同意并继续',
   },
@@ -351,7 +351,7 @@ const TRANS = {
     s0_conf: 'All data is collected anonymously. No personal identifying information is collected.',
     s0_voluntary: 'Participation in this study is completely voluntary. If you decide not to participate, there will not be any negative consequences. If you decide to participate, you may stop at any time and you may decide not to answer any specific question.',
     s0_contact_label: 'Questions? Contact:',
-    s0_contact_name: '(Prof. Lila Davachi)',
+    s0_contact_name: '(Zihe Meng)',
     s0_agree_text: 'I have read and understand the above information and freely give my consent to participate in this research.',
     btn_consent: 'I agree — Continue',
   }
