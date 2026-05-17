@@ -7,13 +7,15 @@
 // ── 全局实验状态 ──────────────────────────────────────
 const State = {
   participantId:  crypto.randomUUID(),
-  group:          Math.ceil(Math.random() * 4),  // 1–4，随机分配
+  prolificPid:    new URLSearchParams(window.location.search).get('PROLIFIC_PID') || '',
+  group:          Math.floor(Math.random() * 4) + 1,  // 1–4，随机分配
   startTime:      Date.now(),
   tabSwitched:    false,
   baseline:       {},   // { sleep, activity, bl_mood_happy, bl_mood_sad, bl_mood_energetic, bl_mood_tired }
   mood:           {},   // { videoInterest, happy, sad, energetic, tired }
   phoneUse:       {},   // { tempted, picked }
   demographics:   {},   // { smHours, smType, videogameHours, age, gender, location, email }
+  attentionCheck: null, // { passed: bool, answer: string }
   preSartTrials:  [],
   postSartTrials: [],
   lastScreen:     null,
@@ -68,6 +70,7 @@ function commitProgress(screenId) {
 
   const partial = {
     participant_id: State.participantId,
+    prolific_pid:   State.prolificPid,
     timestamp:      new Date().toISOString(),
     group:          State.group,
     group_label:    `组${State.group}`,
@@ -111,6 +114,9 @@ function commitProgress(screenId) {
     location:        State.demographics.location       ?? '',
     email:           State.demographics.email          ?? '',
 
+    // 注意力检测
+    attention_check_passed: State.attentionCheck?.passed ?? '',
+
     // 元数据
     tab_switched:     State.tabSwitched,
     pre_sart_trials:  '',
@@ -144,6 +150,7 @@ function submitData() {
 
   const payload = {
     participant_id: State.participantId,
+    prolific_pid:   State.prolificPid,
     timestamp:      new Date().toISOString(),
     group:          State.group,
     group_label:    `组${State.group}`,
@@ -188,6 +195,9 @@ function submitData() {
     gender:          State.demographics.gender,
     location:        State.demographics.location,
     email:           State.demographics.email,
+
+    // 注意力检测
+    attention_check_passed: State.attentionCheck?.passed ?? '',
 
     // 元数据
     tab_switched:     State.tabSwitched,

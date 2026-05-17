@@ -141,6 +141,16 @@ const TRANS = {
     demog_email_hint: '此项为可选，不填不影响提交。',
     btn_submit: '提交',
 
+    // 注意力检测
+    ac_h2: '注意力检测',
+    ac_hint: '这道题帮助我们确认你在认真参与研究。',
+    ac_question: '这是一道注意力检测题。请在下方四个选项中选择「<strong>蓝色</strong>」。',
+    ac_opt_red: '红色（Red）',
+    ac_opt_green: '绿色（Green）',
+    ac_opt_blue: '蓝色（Blue）',
+    ac_opt_yellow: '黄色（Yellow）',
+    alert_ac: '请选择一个选项后提交。',
+
     // 手机使用页
     s_phone_h2: '最后两个问题',
     s_phone_intro1: '在这么长的任务中（25 分钟以上），注意力出现分散是完全正常的现象。',
@@ -267,6 +277,16 @@ const TRANS = {
     video_interest_label: 'How interesting did you find the video?',
     scale_not_interesting: 'Not at all interesting',
     scale_very_interesting: 'Very interesting',
+
+    // Attention check
+    ac_h2: 'Attention Check',
+    ac_hint: 'This question helps us confirm that you are engaged with the study.',
+    ac_question: 'This is an attention check. Please select <strong>"Blue"</strong> from the options below.',
+    ac_opt_red: 'Red',
+    ac_opt_green: 'Green',
+    ac_opt_blue: 'Blue',
+    ac_opt_yellow: 'Yellow',
+    alert_ac: 'Please select an option before submitting.',
 
     // Phone screen
     s_phone_h2: 'Two Last Questions',
@@ -421,6 +441,7 @@ if (CONFIG.debug) {
     { id: 's-mood',            zh: '10 情绪问卷',     en: '10 Mood' },
     { id: 's-sart-transition', zh: '11 →Post-SART',  en: '11 → Post' },
     { id: 's-demographics',    zh: '12 基本信息',     en: '12 Demographics' },
+    { id: 's-attention-check', zh: '12.5 注意力检测', en: '12.5 Attn Check' },
     { id: 's-phone',           zh: '13 手机使用',     en: '13 Phone' },
     { id: 's-complete',        zh: '14 完成',        en: '14 Complete' },
   ];
@@ -1003,7 +1024,35 @@ document.getElementById('btn-demo-submit').addEventListener('click', () => {
     email:          email || null,
   };
   commitProgress('demographics');
-  showScreen('s-phone');
+  showScreen('s-attention-check');
+});
+
+// ════════════════════════════════════════════════════════
+//  SCREEN 12.5: 注意力检测
+// ════════════════════════════════════════════════════════
+document.getElementById('btn-ac-submit').addEventListener('click', () => {
+  const answer = document.querySelector('input[name="ac-answer"]:checked')?.value;
+
+  if (!answer) {
+    alert(T('alert_ac'));
+    return;
+  }
+
+  const passed = answer === 'blue';
+  State.attentionCheck = { passed, answer };
+  commitProgress('attention_check');
+
+  if (passed) {
+    showScreen('s-phone');
+  } else {
+    // 未通过：跳转 Prolific failed URL；未配置时直接到完成页
+    if (CONFIG.prolificFailedUrl && CONFIG.prolificFailedUrl !== 'YOUR_PROLIFIC_FAILED_URL') {
+      window.location.href = CONFIG.prolificFailedUrl;
+    } else {
+      showScreen('s-complete');
+      submitData();
+    }
+  }
 });
 
 // ════════════════════════════════════════════════════════
@@ -1022,4 +1071,5 @@ document.getElementById('btn-phone-submit').addEventListener('click', () => {
   commitProgress('phone');
   showScreen('s-complete');
   submitData();
+  setTimeout(() => { window.location.href = CONFIG.prolificPassUrl; }, 2000);
 });

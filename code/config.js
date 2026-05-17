@@ -86,6 +86,11 @@ const CONFIG = {
     },
   },
 
+  // ── Prolific 完成链接 ─────────────────────────────────
+  // 从 Prolific 后台 "Completion paths" 复制两个链接填入此处
+  prolificPassUrl:   'https://app.prolific.com/submissions/complete?cc=CGC6UQCB',
+  prolificFailedUrl: 'https://app.prolific.com/submissions/complete?cc=CSUGIV1Y',
+
   // ── SART 参数（Robertson et al., 1997）──────────────────
   // digitMs/maskMs 已恢复原版参数（4/4 Lila 邮件确认 + 原文核查）
   // 每轮节奏：250ms digit + 900ms mask = 1150ms，与原论文一致

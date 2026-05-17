@@ -17,12 +17,13 @@ const SHEET_ID   = '1UPH9dljYWdKPb_L7e_fh3MO8BSszB-lSvFbyjpVlS0c';
 const SHEET_NAME = 'responses';
 
 const HEADERS = [
-  'participant_id', 'timestamp', 'group', 'group_label', 'last_screen',
+  'participant_id', 'prolific_pid', 'timestamp', 'group', 'group_label', 'last_screen',
   'bl_sleep', 'bl_activity',
   'bl_mood_happy', 'bl_mood_sad', 'bl_mood_energetic', 'bl_mood_tired',
   'video_interest',
   'mood_happy', 'mood_sad', 'mood_energetic', 'mood_tired',
   'phone_tempted', 'phone_picked',
+  'attention_check_passed',
   'pre_sart_commission_errors', 'pre_sart_omission_errors',
   'pre_sart_mean_rt_ms', 'pre_sart_sdrt_ms',
   'post_sart_commission_errors', 'post_sart_omission_errors',
