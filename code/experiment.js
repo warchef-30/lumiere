@@ -171,7 +171,7 @@ const TRANS = {
     // 验证提示
     alert_baseline: '请填写全部问题后继续。',
     alert_mood: '请完成全部问题后继续。',
-    alert_demographics: '请至少填写社交媒体、游戏时长、年龄、性别和地区后提交。',
+    alert_demographics: '请至少填写社交媒体、游戏时长、年龄、性别、地区及手机号后四位后提交。',
     group_label: '组',
 
     // 知情同意页
@@ -350,7 +350,7 @@ const TRANS = {
 
     alert_baseline: 'Please answer all questions before continuing.',
     alert_mood: 'Please complete all questions before continuing.',
-    alert_demographics: 'Please fill in social media, gaming, age, gender, and location before submitting.',
+    alert_demographics: 'Please fill in social media, gaming, age, gender, location, and last 4 digits of phone number before submitting.',
     group_label: 'Group ',
 
     // Informed consent
