@@ -17,7 +17,7 @@ const SHEET_ID   = '1UPH9dljYWdKPb_L7e_fh3MO8BSszB-lSvFbyjpVlS0c';
 const SHEET_NAME = 'responses';
 
 const HEADERS = [
-  'participant_id', 'tiestap', 'group', 'group_label', 'last_screen',
+  'participant_id', 'timestamp', 'group', 'group_label', 'last_screen',
   'bl_sleep', 'bl_activity',
   'bl_mood_happy', 'bl_mood_sad', 'bl_mood_energetic', 'bl_mood_tired',
   'video_interest',
