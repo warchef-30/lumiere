@@ -111,6 +111,7 @@ function commitProgress(screenId) {
     age:             State.demographics.age            ?? '',
     gender:          State.demographics.gender         ?? '',
     location:        State.demographics.location       ?? '',
+    phone_last4:     State.demographics.phoneLast4     ?? '',
 
     // 注意力检测
     attention_check_passed: State.attentionCheck?.passed ?? '',
@@ -192,6 +193,7 @@ function submitData() {
     age:             State.demographics.age,
     gender:          State.demographics.gender,
     location:        State.demographics.location,
+    phone_last4:     State.demographics.phoneLast4,
 
     // 注意力检测
     attention_check_passed: State.attentionCheck?.passed ?? '',

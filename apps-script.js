@@ -29,7 +29,7 @@ const HEADERS = [
   'post_sart_commission_errors', 'post_sart_omission_errors',
   'post_sart_mean_rt_ms', 'post_sart_sdrt_ms',
   'sm_hours', 'sm_type', 'videogame_hours',
-  'age', 'gender', 'location',
+  'age', 'gender', 'location', 'phone_last4',
   'tab_switched', 'pre_sart_trials', 'post_sart_trials'
 ];
 

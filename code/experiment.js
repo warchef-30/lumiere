@@ -136,6 +136,9 @@ const TRANS = {
     opt_china: '中国',
     opt_us: '美国',
     opt_location_other: '其他',
+    demog_phone_last4_label: '请填写您的手机号后四位',
+    demog_phone_last4_ph: '例：1234',
+    demog_phone_last4_hint: '仅用于匹配作答记录并发放报酬，不会泄露您的隐私。',
 
     btn_submit: '提交',
 
@@ -329,6 +332,9 @@ const TRANS = {
     opt_china: 'China',
     opt_us: 'United States',
     opt_location_other: 'Other',
+    demog_phone_last4_label: 'Last 4 digits of your phone number',
+    demog_phone_last4_ph: 'e.g. 1234',
+    demog_phone_last4_hint: 'Used only to match your response and distribute compensation.',
 
     btn_submit: 'Submit',
 
@@ -1003,7 +1009,8 @@ document.getElementById('btn-demo-submit').addEventListener('click', () => {
   const age            = document.getElementById('demo-age').value;
   const gender         = document.getElementById('demo-gender').value;
   const location       = document.getElementById('demo-location').value;
-  if (!smHours || !smType || !videogameHours || !age || !gender || !location) {
+  const phoneLast4     = document.getElementById('demo-phone-last4').value.trim();
+  if (!smHours || !smType || !videogameHours || !age || !gender || !location || !/^\d{4}$/.test(phoneLast4)) {
     alert(T('alert_demographics'));
     return;
   }
@@ -1015,6 +1022,7 @@ document.getElementById('btn-demo-submit').addEventListener('click', () => {
     age:            +age,
     gender,
     location,
+    phoneLast4,
   };
   commitProgress('demographics');
   showScreen('s-attention-check');
