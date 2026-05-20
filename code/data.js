@@ -7,7 +7,6 @@
 // ── 全局实验状态 ──────────────────────────────────────
 const State = {
   participantId:  crypto.randomUUID(),
-  prolificPid:    new URLSearchParams(window.location.search).get('PROLIFIC_PID') || '',
   group:          Math.floor(Math.random() * 4) + 1,  // 1–4，随机分配
   startTime:      Date.now(),
   tabSwitched:    false,
@@ -70,7 +69,7 @@ function commitProgress(screenId) {
 
   const partial = {
     participant_id: State.participantId,
-    prolific_pid:   State.prolificPid,
+
     timestamp:      new Date().toISOString(),
     group:          State.group,
     group_label:    `组${State.group}`,
@@ -150,7 +149,7 @@ function submitData() {
 
   const payload = {
     participant_id: State.participantId,
-    prolific_pid:   State.prolificPid,
+
     timestamp:      new Date().toISOString(),
     group:          State.group,
     group_label:    `组${State.group}`,

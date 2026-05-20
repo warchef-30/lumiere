@@ -136,9 +136,7 @@ const TRANS = {
     opt_china: '中国',
     opt_us: '美国',
     opt_location_other: '其他',
-    demog_email_label: '邮箱（可选）',
-    demog_email_ph: '留下邮箱，论文发表后将结果发送给你',
-    demog_email_hint: '此项为可选，不填不影响提交。',
+
     btn_submit: '提交',
 
     // 注意力检测
@@ -331,9 +329,7 @@ const TRANS = {
     opt_china: 'China',
     opt_us: 'United States',
     opt_location_other: 'Other',
-    demog_email_label: 'Email (optional)',
-    demog_email_ph: 'Leave your email to receive the paper results',
-    demog_email_hint: 'This field is optional.',
+
     btn_submit: 'Submit',
 
     s_complete_h2: 'Study Complete — Thank You!',
@@ -1007,8 +1003,6 @@ document.getElementById('btn-demo-submit').addEventListener('click', () => {
   const age            = document.getElementById('demo-age').value;
   const gender         = document.getElementById('demo-gender').value;
   const location       = document.getElementById('demo-location').value;
-  const email          = document.getElementById('demo-email').value.trim();
-
   if (!smHours || !smType || !videogameHours || !age || !gender || !location) {
     alert(T('alert_demographics'));
     return;
@@ -1021,7 +1015,6 @@ document.getElementById('btn-demo-submit').addEventListener('click', () => {
     age:            +age,
     gender,
     location,
-    email:          email || null,
   };
   commitProgress('demographics');
   showScreen('s-attention-check');
@@ -1045,13 +1038,8 @@ document.getElementById('btn-ac-submit').addEventListener('click', () => {
   if (passed) {
     showScreen('s-phone');
   } else {
-    // 未通过：跳转 Prolific failed URL；未配置时直接到完成页
-    if (CONFIG.prolificFailedUrl && CONFIG.prolificFailedUrl !== 'YOUR_PROLIFIC_FAILED_URL') {
-      window.location.href = CONFIG.prolificFailedUrl;
-    } else {
-      showScreen('s-complete');
-      submitData();
-    }
+    showScreen('s-complete');
+    submitData();
   }
 });
 
@@ -1071,5 +1059,4 @@ document.getElementById('btn-phone-submit').addEventListener('click', () => {
   commitProgress('phone');
   showScreen('s-complete');
   submitData();
-  setTimeout(() => { window.location.href = CONFIG.prolificPassUrl; }, 2000);
 });

@@ -9,7 +9,7 @@ const CONFIG = {
   // ── 调试开关 ──────────────────────────────────────────
   // true  = 显示视频跳过按钮（本地调试用）
   // false = 隐藏跳过按钮（正式上线用）
-  debug: false,
+  debug: true,
 
   // ── Google Sheets 提交地址 ────────────────────────────
   // 部署 apps-script.js 后，将生成的 Web App URL 填入此处
@@ -85,11 +85,6 @@ const CONFIG = {
       }
     },
   },
-
-  // ── Prolific 完成链接 ─────────────────────────────────
-  // 从 Prolific 后台 "Completion paths" 复制两个链接填入此处
-  prolificPassUrl:   'https://app.prolific.com/submissions/complete?cc=CGC6UQCB',
-  prolificFailedUrl: 'https://app.prolific.com/submissions/complete?cc=C16TKVT8',
 
   // ── SART 参数（Robertson et al., 1997）──────────────────
   // digitMs/maskMs 已恢复原版参数（4/4 Lila 邮件确认 + 原文核查）
