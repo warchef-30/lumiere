@@ -13,7 +13,7 @@ const State = {
   baseline:       {},   // { sleep, activity, bl_mood_happy, bl_mood_sad, bl_mood_energetic, bl_mood_tired }
   mood:           {},   // { videoInterest, happy, sad, energetic, tired }
   phoneUse:       {},   // { tempted, picked }
-  demographics:   {},   // { smHours, smType, videogameHours, age, gender, location, email }
+  demographics:   {},   // { smHours, smType, videogameHours, age, gender, location }
   attentionCheck: null, // { passed: bool, answer: string }
   preSartTrials:  [],
   postSartTrials: [],
@@ -111,7 +111,6 @@ function commitProgress(screenId) {
     age:             State.demographics.age            ?? '',
     gender:          State.demographics.gender         ?? '',
     location:        State.demographics.location       ?? '',
-    email:           State.demographics.email          ?? '',
 
     // 注意力检测
     attention_check_passed: State.attentionCheck?.passed ?? '',
@@ -193,7 +192,6 @@ function submitData() {
     age:             State.demographics.age,
     gender:          State.demographics.gender,
     location:        State.demographics.location,
-    email:           State.demographics.email,
 
     // 注意力检测
     attention_check_passed: State.attentionCheck?.passed ?? '',
