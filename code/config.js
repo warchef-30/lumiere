@@ -13,7 +13,7 @@ const CONFIG = {
 
   // ── Google Sheets 提交地址 ────────────────────────────
   // 部署 apps-script.js 后，将生成的 Web App URL 填入此处
-  sheetsUrl: 'https://lumiere-relay.dreamingwarchef.workers.dev',
+  sheetsUrl: 'https://script.google.com/macros/s/AKfycbyeex-SPo3FBMog7t8-zQvTsMKBdueGdVkWi75lJbuXW9ozYSsVaufb02wHf1F5ABXpyg/exec',
 
   // ── 实验分组视频 ──────────────────────────────────────
   // type 'local': src = 本地 MP4 路径数组（相对于 index.html），按顺序播放
