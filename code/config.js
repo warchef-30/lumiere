@@ -1,19 +1,21 @@
 // ═══════════════════════════════════════════════════════
-//  config.js  —  Lumiere SART 实验配置
-//  这是唯一需要手动编辑的文件。
-//  上线前需修改：debug → false，填入 sheetsUrl 和视频 URL。
+// config.js — Lumiere SART 实验配置
+// 这是唯一需要手动编辑的文件。
+// 上线前需修改：debug → false，填入 sheetsUrl 和视频 URL。
+// （2026-05-21 revert：sheetsUrl 从 Cloudflare Worker 改回 Apps Script）
 // ═══════════════════════════════════════════════════════
 
 const CONFIG = {
 
   // ── 调试开关 ──────────────────────────────────────────
-  // true  = 显示视频跳过按钮（本地调试用）
+  // true = 显示视频跳过按钮（本地调试用）
   // false = 隐藏跳过按钮（正式上线用）
   debug: false,
 
-  // ── Google Sheets 提交地址 ────────────────────────────
-  // 部署 apps-script.js 后，将生成的 Web App URL 填入此处
-  sheetsUrl: 'https://script.google.com/macros/s/AKfycbyeex-SPo3FBMog7t8-zQvTsMKBdueGdVkWi75lJbuXW9ozYSsVaufb02wHf1F5ABXpyg/exec',
+  // ── 数据提交地址（经 Cloudflare Worker 中继）──────────
+  // Worker 会转发到 Google Apps Script。
+  // 这样配置的好处：① 国内访问 ② 拿得到错误反馈 ③ Apps Script URL 不暴露在前端
+  sheetsUrl: 'https://lumiere-relay.dreamingwarchef.workers.dev',
 
   // ── 实验分组视频 ──────────────────────────────────────
   // type 'local': src = 本地 MP4 路径数组（相对于 index.html），按顺序播放
@@ -90,14 +92,14 @@ const CONFIG = {
   // digitMs/maskMs 已恢复原版参数（4/4 Lila 邮件确认 + 原文核查）
   // 每轮节奏：250ms digit + 900ms mask = 1150ms，与原论文一致
   sart: {
-    digitMs:        250,                     // 正式测试：数字呈现时长（ms）
-    maskMs:         900,                     // 正式测试：circle-cross mask 时长（ms）
-    practiceDigitMs: 800,                    // 练习：数字呈现更久，让参与者看清
-    practiceMaskMs:  1000,                   // 练习：mask 停留更久，配合反馈阅读
-    fontSizes:      [48, 72, 94, 100, 120],  // 5种字号（px），每题随机选取
-    target:         3,                       // no-go 数字（见到不按）
-    practiceTrials: 9,                       // 练习题数（每个数字×1）
-    mainTrials:     225,                     // 正式题数（每个数字×25，约4分20秒）
+    digitMs: 250,           // 正式测试：数字呈现时长（ms）
+    maskMs: 900,            // 正式测试：circle-cross mask 时长（ms）
+    practiceDigitMs: 800,   // 练习：数字呈现更久，让参与者看清
+    practiceMaskMs: 1000,   // 练习：mask 停留更久，配合反馈阅读
+    fontSizes: [48, 72, 94, 100, 120], // 5种字号（px），每题随机选取
+    target: 3,              // no-go 数字（见到不按）
+    practiceTrials: 9,      // 练习题数（每个数字×1）
+    mainTrials: 225,        // 正式题数（每个数字×25，约4分20秒）
   },
 
 };
