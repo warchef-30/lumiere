@@ -48,18 +48,56 @@ function computeSartStats(trials) {
   return { meanRT, sdRT, commissionErrors, omissionErrors, accuracy };
 }
 
-// ── 低层提交 ──────────────────────────────────────────
-function _pushToSheet(payload) {
-  if (CONFIG.sheetsUrl === 'YOUR_APPS_SCRIPT_URL_HERE') {
-    console.log('📊 实验数据（未配置提交 URL）:', payload);
-    return;
+// ── 飞书多维表格配置 ──────────────────────────────────
+const FEISHU_APP_ID     = 'cli_aa85b57b9df81cc8';
+const FEISHU_APP_SECRET = 'lzlpXZR6Plj2vL991ckhthloRMiXj2BK';
+const FEISHU_APP_TOKEN  = 'GuJQbirWBaC9gDsL5Euc7KjBnUb';
+const FEISHU_TABLE_ID   = 'tbl7nbIOLQ7U2vRZ';
+
+let _feishuRecordId = null;
+
+async function _pushToSheet(payload) {
+  try {
+    // 1. 获取 token
+    const tokenRes = await fetch(
+      'https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ app_id: FEISHU_APP_ID, app_secret: FEISHU_APP_SECRET }),
+      }
+    );
+    const { tenant_access_token } = await tokenRes.json();
+
+    const baseUrl = `https://open.feishu.cn/open-apis/bitable/v1/apps/${FEISHU_APP_TOKEN}/tables/${FEISHU_TABLE_ID}/records`;
+
+    if (_feishuRecordId) {
+      // 已有记录 → 更新同一行
+      await fetch(`${baseUrl}/${_feishuRecordId}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${tenant_access_token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ fields: payload }),
+      });
+    } else {
+      // 首次 → 新建一行
+      const res = await fetch(baseUrl, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${tenant_access_token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ fields: payload }),
+      });
+      const data = await res.json();
+      console.log('飞书写入结果:', data);
+      _feishuRecordId = data?.data?.record?.record_id ?? null;
+    }
+  } catch (e) {
+    console.warn('飞书提交失败:', e);
   }
-  fetch(CONFIG.sheetsUrl, {
-    method:  'POST',
-    mode:    'no-cors',
-    headers: { 'Content-Type': 'text/plain' },
-    body:    JSON.stringify(payload),
-  }).catch(e => console.warn('提交失败:', e));
 }
 
 // ── 逐屏提交（修改③）────────────────────────────────
