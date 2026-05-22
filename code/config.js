@@ -15,7 +15,7 @@ const CONFIG = {
   // ── 数据提交地址（经 Cloudflare Worker 中继）──────────
   // Worker 会转发到 Google Apps Script。
   // 这样配置的好处：① 国内访问 ② 拿得到错误反馈 ③ Apps Script URL 不暴露在前端
-  sheetsUrl: 'https://lumiere-relay.dreamingwarchef.workers.dev',
+  sheetsUrl: 'https://lumiererelay.uk',
 
   // ── 实验分组视频 ──────────────────────────────────────
   // type 'local': src = 本地 MP4 路径数组（相对于 index.html），按顺序播放
