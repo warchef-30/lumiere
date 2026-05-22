@@ -104,6 +104,9 @@ function commitProgress(screenId) {
     // 手机使用
     phone_tempted: State.phoneUse.tempted ?? '',
     phone_picked: State.phoneUse.picked ?? '',
+    
+    // 注意力检测
+    attention_check_passed: State.attentionCheck?.passed ?? '',
 
     // SART 统计（有数据时填入）
     pre_sart_commission_errors: '',
@@ -123,9 +126,6 @@ function commitProgress(screenId) {
     gender: State.demographics.gender ?? '',
     location: State.demographics.location ?? '',
     phone_last4: State.demographics.phoneLast4 ?? '',
-
-    // 注意力检测
-    attention_check_passed: State.attentionCheck?.passed ?? '',
 
     // 元数据
     tab_switched: State.tabSwitched,
@@ -185,6 +185,9 @@ function submitData() {
     phone_tempted: State.phoneUse.tempted,
     phone_picked: State.phoneUse.picked,
 
+    // 注意力检测
+    attention_check_passed: State.attentionCheck?.passed ?? '',
+  
     // Pre-SART
     pre_sart_commission_errors: pre.commissionErrors,
     pre_sart_omission_errors: pre.omissionErrors,
@@ -205,9 +208,6 @@ function submitData() {
     gender: State.demographics.gender,
     location: State.demographics.location,
     phone_last4: State.demographics.phoneLast4,
-
-    // 注意力检测
-    attention_check_passed: State.attentionCheck?.passed ?? '',
 
     // 元数据
     tab_switched: State.tabSwitched,
