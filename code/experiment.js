@@ -620,8 +620,9 @@ function _startVideo(groupCfg) {
       if (idx < playlist.length) {
         player.src = playlist[idx++];
         player.play();
+      } else {
+        _afterVideo();
       }
-      // 播放列表耗尽但计时器未结束：视频停止，计时器继续控制进入下一步
     };
 
     player.addEventListener('ended', playNext, { signal: _videoEndedAC.signal });
@@ -939,21 +940,11 @@ document.getElementById('btn-video-start').addEventListener('click', () => {
   document.getElementById('btn-video-skip').style.display =
     CONFIG.debug ? 'block' : 'none';
 
-  let remaining = groupCfg.durationSec;
-  const timerEl = document.getElementById('videoTimer');
-  const fillEl  = document.getElementById('videoProgressFill');
-  timerEl.textContent = `${T('video_remaining')}${fmtTime(remaining)}`;
-
-  _videoTimer = setInterval(() => {
-    remaining--;
-    timerEl.textContent = `${T('video_remaining')}${fmtTime(Math.max(0, remaining))}`;
-    fillEl.style.width  = ((1 - remaining / groupCfg.durationSec) * 100) + '%';
-    if (remaining <= 0) { clearInterval(_videoTimer); _afterVideo(); }
-  }, 1000);
+  document.getElementById('videoTimer').style.display = 'none';
+  document.getElementById('videoProgressFill').parentElement.style.display = 'none';
 });
 
 document.getElementById('btn-video-skip').addEventListener('click', () => {
-  clearInterval(_videoTimer);
   _afterVideo();
 });
 

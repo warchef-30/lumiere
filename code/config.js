@@ -10,7 +10,7 @@ const CONFIG = {
   // ── 调试开关 ──────────────────────────────────────────
   // true = 显示视频跳过按钮（本地调试用）
   // false = 隐藏跳过按钮（正式上线用）
-  debug: true,
+  debug: false,
 
   // ── 数据提交地址（经 Cloudflare Worker 中继）──────────
   // Worker 会转发到 Google Apps Script。
@@ -23,7 +23,7 @@ const CONFIG = {
   //
   // 5/23 更新：全部换为抖音视频，适配见数中国用户群体
   // 组1（抖音短视频 8min）：s01–s13，实际 498s
-  // 组2（抖音短视频 ~13min）：s01–s21，实际 767s（待补充更多视频至 ~16min）
+  // 组2（抖音短视频 16min）：s01–s26，实际 952s
   // 组3（抖音长视频 8min）：ComedyFilm-8min.mp4，实际 505s
   // 组4（抖音长视频 16min）：MrBeast-16min.mp4，实际 974s
   videos: {
@@ -47,7 +47,6 @@ const CONFIG = {
       durationSec: 498
     },
     2: {
-      // ⚠️ 待补充：目前 s01–s21 共 767s (~13min)，需追加更多视频至 ~960s (16min)
       type: 'local',
       src: [
         '../videos/short/s01.mp4',
@@ -70,9 +69,14 @@ const CONFIG = {
         '../videos/short/s18.mp4',
         '../videos/short/s19.mp4',
         '../videos/short/s20.mp4',
-        '../videos/short/s21.mp4'
+        '../videos/short/s21.mp4',
+        '../videos/short/s22.mp4',
+        '../videos/short/s23.mp4',
+        '../videos/short/s24.mp4',
+        '../videos/short/s25.mp4',
+        '../videos/short/s26.mp4'
       ],
-      durationSec: 767
+      durationSec: 952
     },
     3: {
       type: 'local',
