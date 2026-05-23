@@ -81,7 +81,7 @@ function commitProgress(screenId) {
   const partial = {
     participant_id: State.participantId,
 
-    timestamp: new Date().toISOString(),
+    timestamp: new Date(Date.now() + 8 * 60 * 60 * 1000).toISOString().replace('Z', '+08:00'),
     group: State.group,
     group_label: `组${State.group}`,
     last_screen: screenId,
@@ -161,7 +161,7 @@ function submitData() {
   const payload = {
     participant_id: State.participantId,
 
-    timestamp: new Date().toISOString(),
+    timestamp: new Date(Date.now() + 8 * 60 * 60 * 1000).toISOString().replace('Z', '+08:00'),
     group: State.group,
     group_label: `组${State.group}`,
     last_screen: 'complete',
