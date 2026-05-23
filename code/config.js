@@ -10,7 +10,7 @@ const CONFIG = {
   // ── 调试开关 ──────────────────────────────────────────
   // true = 显示视频跳过按钮（本地调试用）
   // false = 隐藏跳过按钮（正式上线用）
-  debug: false,
+  debug: true,
 
   // ── 数据提交地址（经 Cloudflare Worker 中继）──────────
   // Worker 会转发到 Google Apps Script。
@@ -21,10 +21,11 @@ const CONFIG = {
   // type 'local': src = 本地 MP4 路径数组（相对于 index.html），按顺序播放
   // durationSec: 视频实际总时长（秒），播放结束后自动进入下一步
   //
-  // 组1（短视频 7min）：s01–s10，实际 363s
-  // 组2（短视频 14min）：s01–s20，实际 826s
-  // 组3（长视频 7min）：FermiParadox-6min.mp4，实际 380s
-  // 组4（长视频 14min）：SubwaySurfurs-13min.mp4，实际 813s
+  // 5/23 更新：全部换为抖音视频，适配见数中国用户群体
+  // 组1（抖音短视频 8min）：s01–s13，实际 498s
+  // 组2（抖音短视频 ~13min）：s01–s21，实际 767s（待补充更多视频至 ~16min）
+  // 组3（抖音长视频 8min）：ComedyFilm-8min.mp4，实际 505s
+  // 组4（抖音长视频 16min）：MrBeast-16min.mp4，实际 974s
   videos: {
     1: {
       type: 'local',
@@ -38,11 +39,15 @@ const CONFIG = {
         '../videos/short/s07.mp4',
         '../videos/short/s08.mp4',
         '../videos/short/s09.mp4',
-        '../videos/short/s10.mp4'
+        '../videos/short/s10.mp4',
+        '../videos/short/s11.mp4',
+        '../videos/short/s12.mp4',
+        '../videos/short/s13.mp4'
       ],
-      durationSec: 363
+      durationSec: 498
     },
     2: {
+      // ⚠️ 待补充：目前 s01–s21 共 767s (~13min)，需追加更多视频至 ~960s (16min)
       type: 'local',
       src: [
         '../videos/short/s01.mp4',
@@ -64,27 +69,20 @@ const CONFIG = {
         '../videos/short/s17.mp4',
         '../videos/short/s18.mp4',
         '../videos/short/s19.mp4',
-        '../videos/short/s20.mp4'
+        '../videos/short/s20.mp4',
+        '../videos/short/s21.mp4'
       ],
-      durationSec: 826
+      durationSec: 767
     },
     3: {
       type: 'local',
-      src: ['../videos/long/FermiParadox-6min.mp4'],
-      durationSec: 380,
-      subtitles: {
-        en: '../videos/long/FermiParadox-6min.en.vtt',
-        zh: '../videos/long/FermiParadox-6min.zh.vtt'
-      }
+      src: ['../videos/long/ComedyFilm-8min.mp4'],
+      durationSec: 505
     },
     4: {
       type: 'local',
-      src: ['../videos/long/SubwaySurfurs-13min.mp4'],
-      durationSec: 813,
-      subtitles: {
-        en: '../videos/long/SubwaySurfurs-13min.en.vtt',
-        zh: '../videos/long/SubwaySurfurs-13min.zh.vtt'
-      }
+      src: ['../videos/long/MrBeast-16min.mp4'],
+      durationSec: 974
     },
   },
 
