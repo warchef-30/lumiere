@@ -10,7 +10,7 @@ const CONFIG = {
   // ── 调试开关 ──────────────────────────────────────────
   // true = 显示视频跳过按钮（本地调试用）
   // false = 隐藏跳过按钮（正式上线用）
-  debug: true,
+  debug: false,
 
   // ── 数据提交地址（经 Cloudflare Worker 中继）──────────
   // Worker 会转发到 Google Apps Script。
